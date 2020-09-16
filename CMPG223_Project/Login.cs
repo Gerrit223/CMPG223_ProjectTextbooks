@@ -16,5 +16,12 @@ namespace CMPG223_Project
         {
             InitializeComponent();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            MakeAdvert ss = new MakeAdvert();
+            ss.Show();
+        }
     }
 }
