@@ -71,7 +71,7 @@ namespace CMPG223_Project
 
         }
 
-        private void button1_Click(object sender, EventArgs e)// Register
+        private void button1_Click(object sender, EventArgs e)
         {
             string name, surname, email, cellnr, password, confirmPassword;
             bool digits, emailAvailable;
