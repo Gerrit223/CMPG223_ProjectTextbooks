@@ -83,7 +83,6 @@ namespace CMPG223_Project
                     if (dt.Rows[0][0].ToString() == "1")
                     {
                         string sqlStatement = "SELECT ClientId FROM Clients WHERE email = '"+ username +"' AND password = '"+ password +"' ";
-                        //ClientIdValue = 0;
 
                         using (conn = new SqlConnection(constr))
                         {
@@ -94,6 +93,10 @@ namespace CMPG223_Project
                                 ClientIdValue = (int)comm.ExecuteScalar();
                                 conn.Close();
                                 MessageBox.Show(ClientIdValue.ToString());
+                                Menu menu = new Menu(ClientIdValue);
+                               // MakeAdvert ma = new MakeAdvert(ClientIdValue);
+                                menu.ShowDialog();
+                                this.Close();
 
                             }
                             catch(SqlException error)
@@ -103,9 +106,7 @@ namespace CMPG223_Project
                         }
                         MessageBox.Show("Correct you may proceed");
 
-                        Menu menu = new Menu();
-                        menu.ShowDialog();
-                        this.Close();
+                        
                     }
                     else
                     {
