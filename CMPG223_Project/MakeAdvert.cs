@@ -43,5 +43,14 @@ namespace CMPG223_Project
             
             
         }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            var date = DateTime.Now.ToShortDateString();
+            var date2 = DateTime.Now.ToLongDateString();
+            var date3 = DateTime.Now;
+            MessageBox.Show(date2.ToString());
+
+        }
     }
 }
