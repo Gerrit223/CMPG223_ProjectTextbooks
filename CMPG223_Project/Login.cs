@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 
+
 namespace CMPG223_Project
 {
     public partial class Login : Form
@@ -19,32 +20,12 @@ namespace CMPG223_Project
         public SqlCommand comm;
         public SqlDataReader datread;
         public DataTable dt;
+        public string constr = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\CMPG223 Project\CMPG223_Project\CMPG223_Project\Textbooks.mdf;Integrated Security=True";
         public Login()
         {
             
         InitializeComponent();
         }
-
-        //private bool checkLogin(string email, string password)
-        //{
-        //    string sql = "SELECT * FROM Clients";
-        //    conn.Open();
-        //    comm = new SqlCommand(sql, conn);
-        //    datread = comm.ExecuteReader();
-        //    while (datread.Read())
-        //    {
-        //        if (datread.GetValue(3).ToString() == email && datread.GetValue(5).ToString() == password)
-        //        {
-        //            MessageBox.Show("test");
-        //            conn.Close();
-        //            return true;
-        //        }
-                   
-                    
-        //    }
-        //    conn.Close();
-        //    return false;
-       // }
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
@@ -58,9 +39,7 @@ namespace CMPG223_Project
         {
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             try
-            {
-                string constr = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\CMPG223 Project\CMPG223_Project\CMPG223_Project\Textbooks.mdf;Integrated Security=True";
-               
+            {          
                 conn = new SqlConnection(constr);
                 conn.Open();
                 comm = new SqlCommand("SELECT * FROM Clients");
@@ -82,28 +61,44 @@ namespace CMPG223_Project
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string email, password;
+           string username, password;
 
-            email = txtPassowrd.Text;
-            password = txtEmail.Text;
-            conn.Open();
-            comm = new SqlCommand("SELECT Count(*) FROM Clients WHERE email = '" + email + "' AND password = '" + password + "' ");
-            comm.Connection = conn;
-            adap = new SqlDataAdapter("SELECT Count(*) FROM Clients WHERE email = '" + email + "' AND password = '" + password + "'",conn);
-            adap.SelectCommand = comm;
-
-            dt = new DataTable();
-            adap.Fill(dt);
-
-            if (dt.Rows[0][0].ToString() == "1")
+           password = txtPassowrd.Text;
+           username = txtEmail.Text;
+            if (username == "admin" && password == "admin")
             {
-                MessageBox.Show("Login success");
+                
             }
             else
-                MessageBox.Show("Enter correct email and pw");
+            {
+                try
+                {
+                    conn = new SqlConnection(constr);
+                    conn.Open();
+                    adap = new SqlDataAdapter("SELECT COUNT(*) FROM Clients WHERE Email = '" + username + "'and Password = '" + password + "'", conn);
+                    dt = new DataTable();
+                    adap.Fill(dt);
 
-            conn.Close();
+                    if (dt.Rows[0][0].ToString() == "1")
+                    {
+                        //MessageBox.Show("Correct you may proceed");
+                        Menu menu = new Menu();
+                        menu.ShowDialog();
+                        this.Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Username/Password is wrong","Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                    }
+                    conn.Close();
 
+                }
+                catch(SqlException error)
+                {
+                    MessageBox.Show(error.Message);
+                }   
+            }         
+           
         }
     }
 }

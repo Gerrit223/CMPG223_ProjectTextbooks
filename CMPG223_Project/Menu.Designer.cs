@@ -28,70 +28,103 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.makeAdvertToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.makeAdvertToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.viewAdvertToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.yourAdvertsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.userDetailsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.changeDetailsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.logoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // button1
+            // menuStrip1
             // 
-            this.button1.Location = new System.Drawing.Point(312, 85);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(115, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Make Advert";
-            this.button1.UseVisualStyleBackColor = true;
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.makeAdvertToolStripMenuItem,
+            this.userDetailsToolStripMenuItem,
+            this.logoutToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(800, 24);
+            this.menuStrip1.TabIndex = 4;
+            this.menuStrip1.Text = "menuStrip1";
             // 
-            // button2
+            // makeAdvertToolStripMenuItem
             // 
-            this.button2.Location = new System.Drawing.Point(312, 166);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(115, 23);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "View Adverts";
-            this.button2.UseVisualStyleBackColor = true;
+            this.makeAdvertToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.makeAdvertToolStripMenuItem1,
+            this.viewAdvertToolStripMenuItem,
+            this.yourAdvertsToolStripMenuItem});
+            this.makeAdvertToolStripMenuItem.Name = "makeAdvertToolStripMenuItem";
+            this.makeAdvertToolStripMenuItem.Size = new System.Drawing.Size(104, 20);
+            this.makeAdvertToolStripMenuItem.Text = " Advertisements";
             // 
-            // button3
+            // makeAdvertToolStripMenuItem1
             // 
-            this.button3.Location = new System.Drawing.Point(312, 263);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(115, 23);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "Your Adverts";
-            this.button3.UseVisualStyleBackColor = true;
+            this.makeAdvertToolStripMenuItem1.Name = "makeAdvertToolStripMenuItem1";
+            this.makeAdvertToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.makeAdvertToolStripMenuItem1.Text = "Make Adverts";
             // 
-            // label1
+            // viewAdvertToolStripMenuItem
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(340, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(74, 25);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "MENU";
+            this.viewAdvertToolStripMenuItem.Name = "viewAdvertToolStripMenuItem";
+            this.viewAdvertToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.viewAdvertToolStripMenuItem.Text = "View Advers";
+            // 
+            // yourAdvertsToolStripMenuItem
+            // 
+            this.yourAdvertsToolStripMenuItem.Name = "yourAdvertsToolStripMenuItem";
+            this.yourAdvertsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.yourAdvertsToolStripMenuItem.Text = "Your Adverts";
+            // 
+            // userDetailsToolStripMenuItem
+            // 
+            this.userDetailsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.changeDetailsToolStripMenuItem});
+            this.userDetailsToolStripMenuItem.Name = "userDetailsToolStripMenuItem";
+            this.userDetailsToolStripMenuItem.Size = new System.Drawing.Size(80, 20);
+            this.userDetailsToolStripMenuItem.Text = "User Details";
+            // 
+            // changeDetailsToolStripMenuItem
+            // 
+            this.changeDetailsToolStripMenuItem.Name = "changeDetailsToolStripMenuItem";
+            this.changeDetailsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.changeDetailsToolStripMenuItem.Text = "Change Details";
+            // 
+            // logoutToolStripMenuItem
+            // 
+            this.logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
+            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(57, 20);
+            this.logoutToolStripMenuItem.Text = "Logout";
             // 
             // Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.menuStrip1);
+            this.IsMdiContainer = true;
+            this.MainMenuStrip = this.menuStrip1;
             this.Name = "Menu";
             this.Text = "Menu";
+            this.Load += new System.EventHandler(this.Menu_Load);
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem makeAdvertToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem makeAdvertToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem viewAdvertToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem yourAdvertsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem userDetailsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem changeDetailsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem logoutToolStripMenuItem;
     }
 }
