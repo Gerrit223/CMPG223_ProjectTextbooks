@@ -21,7 +21,7 @@ namespace CMPG223_Project
         public SqlDataReader datread;
         public DataTable dt;
         public int ClientIdValue;
-        public string constr = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\CMPG223 Project\CMPG223_Project\CMPG223_Project\Textbooks.mdf;Integrated Security=True";
+        public string constr = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\CMPG 223 Project\CMPG223_Project\Textbooks.mdf;Integrated Security = True";
         public Login()
         {
             
@@ -62,13 +62,19 @@ namespace CMPG223_Project
 
         private void button1_Click(object sender, EventArgs e)
         {
-           string username, password;
+           
+           
+        }
 
-           password = txtPassowrd.Text;
-           username = txtEmail.Text;
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            string username, password;
+
+            password = txtPassowrd.Text;
+            username = txtEmail.Text;
             if (username == "admin" && password == "admin")
             {
-                
+
             }
             else
             {
@@ -82,7 +88,7 @@ namespace CMPG223_Project
 
                     if (dt.Rows[0][0].ToString() == "1")
                     {
-                        string sqlStatement = "SELECT ClientId FROM Clients WHERE email = '"+ username +"' AND password = '"+ password +"' ";
+                        string sqlStatement = "SELECT ClientId FROM Clients WHERE email = '" + username + "' AND password = '" + password + "' ";
 
                         using (conn = new SqlConnection(constr))
                         {
@@ -94,40 +100,38 @@ namespace CMPG223_Project
                                 conn.Close();
                                 MessageBox.Show(ClientIdValue.ToString());
                                 Menu menu = new Menu(ClientIdValue);
-                               // MakeAdvert ma = new MakeAdvert(ClientIdValue);
+                                // MakeAdvert ma = new MakeAdvert(ClientIdValue);
                                 menu.ShowDialog();
                                 this.Close();
 
                             }
-                            catch(SqlException error)
+                            catch (SqlException error)
                             {
                                 MessageBox.Show(error.Message);
                             }
                         }
                         MessageBox.Show("Correct you may proceed");
 
-                        
+
                     }
                     else
                     {
-                        MessageBox.Show("Username/Password is wrong","Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                        MessageBox.Show("Username/Password is wrong", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     conn.Close();
 
                 }
-                catch(SqlException error)
+                catch (SqlException error)
                 {
                     MessageBox.Show(error.Message);
-                }   
-            }         
-           
+                }
+            }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            MakeAdvert ss = new MakeAdvert();
-            ss.Show();
+            Delete d1 = new Delete();
+            d1.Show();
         }
     }
 }
