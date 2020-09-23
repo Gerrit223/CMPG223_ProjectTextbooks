@@ -96,7 +96,7 @@ namespace CMPG223_Project
                 string sqlBookId = "SELECT BookId FROM Books WHERE ISBN = '" + isbn + "' AND Title = '" + title + "' AND Edition = '" + edition + "' AND Price = '" + price + "' ";
                 bookId = getPrimaryKeyValue(sqlBookId);
                 //INSERT INTO BOOKADVERTS
-                 insert = "INSERT INTO BookAdverts VALUES(@ClientId,@BookId,@DateAdded)";
+                insert = "INSERT INTO BookAdverts VALUES(@ClientId,@BookId,@DateAdded)";
                 conn = new SqlConnection(constr);
                 conn.Open();
                 cmd = new SqlCommand(insert, conn);

@@ -23,7 +23,6 @@ namespace CMPG223_Project
         private void Menu_Load(object sender, EventArgs e)
         {
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            MessageBox.Show(Client.ToString());
         }
 
         private void viewAdvertsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -41,8 +40,21 @@ namespace CMPG223_Project
         private void logoutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Login l1 = new Login();
-            l1.ShowDialog();
-            this.Close();
+            DialogResult logout = MessageBox.Show("Are you sure you want to log out?", "Logout", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+            if(logout == DialogResult.Yes)
+            {
+                l1.ShowDialog();
+                this.Close();
+            }
+
+            
+        }
+
+        private void viewAdvertToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ViewAdvert va = new ViewAdvert(Client);
+            va.MdiParent = this;
+            va.Show();
         }
     }
 }

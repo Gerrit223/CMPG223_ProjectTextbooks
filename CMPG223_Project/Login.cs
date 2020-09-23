@@ -8,7 +8,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
-//LOGIN KOMMENTAAR
 
 namespace CMPG223_Project
 {
@@ -51,7 +50,6 @@ namespace CMPG223_Project
                 ads.Fill(ds, "Clients");
                 dataGridView1.DataSource = ds;
                 dataGridView1.DataMember = "Clients";
-                //MessageBox.Show("Open");
                 conn.Close();
             }
             catch (SqlException error)
@@ -92,9 +90,7 @@ namespace CMPG223_Project
                                 conn.Open();
                                 ClientIdValue = (int)comm.ExecuteScalar();
                                 conn.Close();
-                                MessageBox.Show(ClientIdValue.ToString());
                                 Menu menu = new Menu(ClientIdValue);
-                               // MakeAdvert ma = new MakeAdvert(ClientIdValue);
                                 menu.ShowDialog();
                                 this.Close();
 
@@ -103,10 +99,7 @@ namespace CMPG223_Project
                             {
                                 MessageBox.Show(error.Message);
                             }
-                        }
-                        MessageBox.Show("Correct you may proceed");
-
-                        
+                        }                      
                     }
                     else
                     {
