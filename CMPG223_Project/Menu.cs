@@ -16,5 +16,15 @@ namespace CMPG223_Project
         {
             InitializeComponent();
         }
+
+        private void Menu_Load(object sender, EventArgs e)
+        {
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+        }
+
+        private void viewAdvertsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
