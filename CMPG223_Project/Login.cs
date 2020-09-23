@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
-
+//LOGIN KOMMENTAAR
 
 namespace CMPG223_Project
 {
@@ -20,6 +20,7 @@ namespace CMPG223_Project
         public SqlCommand comm;
         public SqlDataReader datread;
         public DataTable dt;
+        public int ClientIdValue;
         public string constr = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\CMPG223 Project\CMPG223_Project\CMPG223_Project\Textbooks.mdf;Integrated Security=True";
         public Login()
         {
@@ -81,10 +82,31 @@ namespace CMPG223_Project
 
                     if (dt.Rows[0][0].ToString() == "1")
                     {
-                        //MessageBox.Show("Correct you may proceed");
-                        Menu menu = new Menu();
-                        menu.ShowDialog();
-                        this.Close();
+                        string sqlStatement = "SELECT ClientId FROM Clients WHERE email = '"+ username +"' AND password = '"+ password +"' ";
+
+                        using (conn = new SqlConnection(constr))
+                        {
+                            comm = new SqlCommand(sqlStatement, conn);
+                            try
+                            {
+                                conn.Open();
+                                ClientIdValue = (int)comm.ExecuteScalar();
+                                conn.Close();
+                                MessageBox.Show(ClientIdValue.ToString());
+                                Menu menu = new Menu(ClientIdValue);
+                               // MakeAdvert ma = new MakeAdvert(ClientIdValue);
+                                menu.ShowDialog();
+                                this.Close();
+
+                            }
+                            catch(SqlException error)
+                            {
+                                MessageBox.Show(error.Message);
+                            }
+                        }
+                        MessageBox.Show("Correct you may proceed");
+
+                        
                     }
                     else
                     {
