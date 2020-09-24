@@ -66,7 +66,7 @@ namespace CMPG223_Project
            username = txtEmail.Text;
             if (username == "admin" && password == "admin")
             {
-                
+               /////////// Redirect ///////////// 
             }
             else
             {

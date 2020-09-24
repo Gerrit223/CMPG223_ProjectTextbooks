@@ -46,8 +46,6 @@ namespace CMPG223_Project
                 l1.ShowDialog();
                 this.Close();
             }
-
-            
         }
 
         private void viewAdvertToolStripMenuItem_Click(object sender, EventArgs e)
@@ -55,6 +53,13 @@ namespace CMPG223_Project
             ViewAdvert va = new ViewAdvert(Client);
             va.MdiParent = this;
             va.Show();
+        }
+
+        private void yourAdvertsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            YourAdvert ya = new YourAdvert(Client);
+            ya.MdiParent = this;
+            ya.Show();
         }
     }
 }

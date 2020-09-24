@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.IO;
 
 namespace CMPG223_Project
 {
@@ -74,7 +75,6 @@ namespace CMPG223_Project
 
                     return "";
                 }
-
             }
         }
         private void ViewAdvert_Load(object sender, EventArgs e)
@@ -106,7 +106,6 @@ namespace CMPG223_Project
             {
                 listBox1.Items.Clear();
             }
-            //listBox1.Items.Add(textBox1.Text);
             try
             {
                 conn = new SqlConnection(constr);
@@ -131,39 +130,45 @@ namespace CMPG223_Project
         {
             listBox1.Items.Clear();
             string name, surname, cell, title, price,edition;
-
-            if(dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
+            try
             {
-                dataGridView1.CurrentRow.Selected = true;
-                bookId = int.Parse(dataGridView1.Rows[e.RowIndex].Cells["BookId"].FormattedValue.ToString());
-                clientId = getPrimaryKeyValue("SELECT ClientId from BookAdverts WHERE BookId = '"+ bookId +"' ");
-                name = getStringValue("SELECT Name from Clients WHERE ClientId = '" + clientId + "' ");
-                surname = getStringValue("SELECT Surname from Clients WHERE ClientId = '" + clientId + "' ");
-                cell = getStringValue("SELECT cellnr from Clients WHERE ClientId = '" + clientId + "' ");
-                title = getStringValue("SELECT Title from Books WHERE BookId = '" + bookId + "' ");
-                price = getStringValue("SELECT Price from Books WHERE BookId = '" + bookId + "' ");
-                edition = getStringValue("SELECT Edition from Books WHERE BookId = '" + bookId + "' ");
+                if (dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
+                {
+                    dataGridView1.CurrentRow.Selected = true;
+                    bookId = int.Parse(dataGridView1.Rows[e.RowIndex].Cells["BookId"].FormattedValue.ToString());
+                    clientId = getPrimaryKeyValue("SELECT ClientId from BookAdverts WHERE BookId = '" + bookId + "' ");
+                    name = getStringValue("SELECT Name from Clients WHERE ClientId = '" + clientId + "' ");
+                    surname = getStringValue("SELECT Surname from Clients WHERE ClientId = '" + clientId + "' ");
+                    cell = getStringValue("SELECT cellnr from Clients WHERE ClientId = '" + clientId + "' ");
+                    title = getStringValue("SELECT Title from Books WHERE BookId = '" + bookId + "' ");
+                    price = getStringValue("SELECT Price from Books WHERE BookId = '" + bookId + "' ");
+                    edition = getStringValue("SELECT Edition from Books WHERE BookId = '" + bookId + "' ");
 
 
-                listBox1.Items.Add("\t" + title);
-                listBox1.Items.Add("");
-                listBox1.Items.Add("Name");
-                listBox1.Items.Add("");
-                listBox1.Items.Add("Edition" );
-                listBox1.Items.Add("");
-                listBox1.Items.Add("Cellphone");
-                listBox1.Items.Add("");
-                listBox1.Items.Add("Price");
-                listBox1.Items.Add("");
-                listBox1.Items.Add("");
-                listBox1.Items.Add(name + " " + surname);
-                listBox1.Items.Add("");
-                listBox1.Items.Add(edition);
-                listBox1.Items.Add("");
-                listBox1.Items.Add(cell);
-                listBox1.Items.Add("");
-                listBox1.Items.Add("R" + price);
+                    listBox1.Items.Add("\t" + title);
+                    listBox1.Items.Add("");
+                    listBox1.Items.Add("Name");
+                    listBox1.Items.Add("");
+                    listBox1.Items.Add("Edition");
+                    listBox1.Items.Add("");
+                    listBox1.Items.Add("Cellphone");
+                    listBox1.Items.Add("");
+                    listBox1.Items.Add("Price");
+                    listBox1.Items.Add("");
+                    listBox1.Items.Add("");
+                    listBox1.Items.Add(name + " " + surname);
+                    listBox1.Items.Add("");
+                    listBox1.Items.Add(edition);
+                    listBox1.Items.Add("");
+                    listBox1.Items.Add(cell);
+                    listBox1.Items.Add("");
+                    listBox1.Items.Add("R" + price);
 
+                }
+            }
+            catch(System.ArgumentOutOfRangeException a)
+            {
+                MessageBox.Show(a.Message);
             }
         }
     }
