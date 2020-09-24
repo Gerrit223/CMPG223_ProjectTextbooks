@@ -72,7 +72,7 @@
             // 
             this.viewAdvertToolStripMenuItem.Name = "viewAdvertToolStripMenuItem";
             this.viewAdvertToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.viewAdvertToolStripMenuItem.Text = "View Advers";
+            this.viewAdvertToolStripMenuItem.Text = "View Adverts";
             this.viewAdvertToolStripMenuItem.Click += new System.EventHandler(this.viewAdvertToolStripMenuItem_Click);
             // 
             // yourAdvertsToolStripMenuItem
