@@ -16,5 +16,10 @@ namespace CMPG223_Project
         {
             InitializeComponent();
         }
+
+        private void YourAdvert_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

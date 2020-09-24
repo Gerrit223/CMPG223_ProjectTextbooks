@@ -56,5 +56,10 @@ namespace CMPG223_Project
             va.MdiParent = this;
             va.Show();
         }
+
+        private void yourAdvertsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

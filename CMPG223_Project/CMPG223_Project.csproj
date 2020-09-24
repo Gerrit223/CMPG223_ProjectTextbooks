@@ -105,6 +105,9 @@
     <Compile Include="YourAdvert.Designer.cs">
       <DependentUpon>YourAdvert.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="ChangeDetails.resx">
+      <DependentUpon>ChangeDetails.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
@@ -128,6 +131,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ViewAdvert.resx">
       <DependentUpon>ViewAdvert.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="YourAdvert.resx">
+      <DependentUpon>YourAdvert.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
