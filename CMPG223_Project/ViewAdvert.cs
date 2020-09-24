@@ -14,7 +14,6 @@ namespace CMPG223_Project
     public partial class ViewAdvert : Form
     {
         private int bookId, clientId;
-        String tabs = "{0,0}{1,60}";
         public SqlConnection conn;
         public SqlDataAdapter adap;
         public DataSet ds;
@@ -146,17 +145,25 @@ namespace CMPG223_Project
                 edition = getStringValue("SELECT Edition from Books WHERE BookId = '" + bookId + "' ");
 
 
-               
-                listBox1.Items.Add(title);
-                listBox1.Items.Add("========================");
-                listBox1.Items.Add(String.Format(tabs, "Name", name + " " + surname));
+                listBox1.Items.Add("\t" + title);
                 listBox1.Items.Add("");
-                listBox1.Items.Add(String.Format(tabs, "Edition", edition));
+                listBox1.Items.Add("Name");
                 listBox1.Items.Add("");
-                listBox1.Items.Add(String.Format(tabs, "Cellphone", cell));
+                listBox1.Items.Add("Edition" );
                 listBox1.Items.Add("");
-                listBox1.Items.Add(String.Format(tabs, "Price","R"+price));
-   
+                listBox1.Items.Add("Cellphone");
+                listBox1.Items.Add("");
+                listBox1.Items.Add("Price");
+                listBox1.Items.Add("");
+                listBox1.Items.Add("");
+                listBox1.Items.Add(name + " " + surname);
+                listBox1.Items.Add("");
+                listBox1.Items.Add(edition);
+                listBox1.Items.Add("");
+                listBox1.Items.Add(cell);
+                listBox1.Items.Add("");
+                listBox1.Items.Add("R" + price);
+
             }
         }
     }

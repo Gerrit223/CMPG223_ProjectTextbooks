@@ -37,6 +37,9 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AllowUserToOrderColumns = true;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(27, 78);
             this.dataGridView1.Name = "dataGridView1";
@@ -63,10 +66,13 @@
             // 
             // listBox1
             // 
+            this.listBox1.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
+            this.listBox1.ColumnWidth = 100;
             this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(107, 313);
+            this.listBox1.Location = new System.Drawing.Point(153, 307);
+            this.listBox1.MultiColumn = true;
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(328, 251);
+            this.listBox1.Size = new System.Drawing.Size(227, 121);
             this.listBox1.TabIndex = 5;
             // 
             // ViewAdvert
