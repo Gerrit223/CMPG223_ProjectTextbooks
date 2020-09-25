@@ -73,6 +73,7 @@ namespace CMPG223_Project
             DialogResult delete = MessageBox.Show("Are you sure you want to delete this Advert?", "Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
             if (delete == DialogResult.Yes)
             {
+                // Validates if the user selected a  valid RowIndex
                 try
                 {
                     if (dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
@@ -90,9 +91,7 @@ namespace CMPG223_Project
                 {
                     MessageBox.Show(a.Message);
                 }
-
-            }
-           
+            } 
         }
 
         private void YourAdvert_Load(object sender, EventArgs e)
