@@ -26,6 +26,25 @@ namespace CMPG223_Project
             clientId = id;
             InitializeComponent();
         }
+
+        private void DeleteEntry(String sqlDelete)
+        {
+            // Delete the entery that the user selected
+            try
+            {
+                conn = new SqlConnection(constr);
+                conn.Open();
+                comm = new SqlCommand(sqlDelete, conn);
+                comm.Connection = conn;
+                comm.ExecuteNonQuery();
+                conn.Close();
+            }
+                catch (SqlException error)
+            {
+                MessageBox.Show(error.Message);
+            }
+        }
+
         private void DisplayAll()
         {
             // Populates the datagrid
@@ -60,25 +79,11 @@ namespace CMPG223_Project
                     {
                         dataGridView1.CurrentRow.Selected = true;
                         bookId = int.Parse(dataGridView1.Rows[e.RowIndex].Cells["BookId"].FormattedValue.ToString());
-
-                        try
-                        {
-                            conn = new SqlConnection(constr);
-                            conn.Open();
-                            comm = new SqlCommand("Delete b.*, ba.*, bau.* FROM Books b LEFT JOIN BookAdverts ba, BookAuthors bau ON b.BookId = ba.BookId AND b.BookId WHERE b.BookId = '" + bookId + "'", conn);
-                            comm.Connection = conn;
-                            comm.ExecuteNonQuery();
-                            conn.Close();
-
-                            MessageBox.Show("Advert has been deleted", "Info",MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            DisplayAll();
-                        }
-                        catch (SqlException error)
-                        {
-                            MessageBox.Show(error.Message);
-                        }
-
-
+                        DeleteEntry("Delete FROM BookAuthors WHERE BookId = '" + bookId + "'");
+                        DeleteEntry("Delete FROM BookAdverts WHERE BookId = '" + bookId + "'");
+                        DeleteEntry("Delete FROM Books WHERE BookId = '" + bookId + "'");
+                        MessageBox.Show("Advert has been deleted", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        DisplayAll();
                     }
                 }
                 catch (System.ArgumentOutOfRangeException a)
