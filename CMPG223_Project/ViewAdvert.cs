@@ -8,20 +8,20 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.IO;
 
 namespace CMPG223_Project
 {
     public partial class ViewAdvert : Form
     {
         private int bookId, clientId;
-        String tabs = "{0,0}{1,60}";
         public SqlConnection conn;
         public SqlDataAdapter adap;
         public DataSet ds;
         public SqlCommand comm;
         public SqlDataReader datread;
         public DataTable dt;
-        public string constr = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\CMPG223 Project\CMPG223_Project\CMPG223_Project\Textbooks.mdf;Integrated Security=True";
+        public string constr = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Renier Botha\Documents\IT2020\CMPG223\FinalProg\CMPG223_Project\TextbookDB.mdf;Integrated Security=True";
         public ViewAdvert(int id)
         {
             InitializeComponent();
@@ -31,7 +31,7 @@ namespace CMPG223_Project
         {
             string sqlStatement = sql;
             int primarykey;
-            using (conn = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = E:\CMPG223 Project\CMPG223_Project\CMPG223_Project\Textbooks.mdf; Integrated Security = True"))
+            using (conn = new SqlConnection(constr))
             {
                 conn.Open();
                 comm = new SqlCommand(sqlStatement, conn);
@@ -57,7 +57,7 @@ namespace CMPG223_Project
         {
             string sqlStatement = sql;
             string value;
-            using (conn = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = E:\CMPG223 Project\CMPG223_Project\CMPG223_Project\Textbooks.mdf; Integrated Security = True"))
+            using (conn = new SqlConnection(constr))
             {
                 conn.Open();
                 comm = new SqlCommand(sqlStatement, conn);
@@ -75,7 +75,6 @@ namespace CMPG223_Project
 
                     return "";
                 }
-
             }
         }
         private void ViewAdvert_Load(object sender, EventArgs e)
@@ -107,7 +106,6 @@ namespace CMPG223_Project
             {
                 listBox1.Items.Clear();
             }
-            //listBox1.Items.Add(textBox1.Text);
             try
             {
                 conn = new SqlConnection(constr);
@@ -132,31 +130,45 @@ namespace CMPG223_Project
         {
             listBox1.Items.Clear();
             string name, surname, cell, title, price,edition;
-
-            if(dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
+            try
             {
-                dataGridView1.CurrentRow.Selected = true;
-                bookId = int.Parse(dataGridView1.Rows[e.RowIndex].Cells["BookId"].FormattedValue.ToString());
-                clientId = getPrimaryKeyValue("SELECT ClientId from BookAdverts WHERE BookId = '"+ bookId +"' ");
-                name = getStringValue("SELECT Name from Clients WHERE ClientId = '" + clientId + "' ");
-                surname = getStringValue("SELECT Surname from Clients WHERE ClientId = '" + clientId + "' ");
-                cell = getStringValue("SELECT cellnr from Clients WHERE ClientId = '" + clientId + "' ");
-                title = getStringValue("SELECT Title from Books WHERE BookId = '" + bookId + "' ");
-                price = getStringValue("SELECT Price from Books WHERE BookId = '" + bookId + "' ");
-                edition = getStringValue("SELECT Edition from Books WHERE BookId = '" + bookId + "' ");
+                if (dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
+                {
+                    dataGridView1.CurrentRow.Selected = true;
+                    bookId = int.Parse(dataGridView1.Rows[e.RowIndex].Cells["BookId"].FormattedValue.ToString());
+                    clientId = getPrimaryKeyValue("SELECT ClientId from BookAdverts WHERE BookId = '" + bookId + "' ");
+                    name = getStringValue("SELECT Name from Clients WHERE ClientId = '" + clientId + "' ");
+                    surname = getStringValue("SELECT Surname from Clients WHERE ClientId = '" + clientId + "' ");
+                    cell = getStringValue("SELECT cellnr from Clients WHERE ClientId = '" + clientId + "' ");
+                    title = getStringValue("SELECT Title from Books WHERE BookId = '" + bookId + "' ");
+                    price = getStringValue("SELECT Price from Books WHERE BookId = '" + bookId + "' ");
+                    edition = getStringValue("SELECT Edition from Books WHERE BookId = '" + bookId + "' ");
 
 
-               
-                listBox1.Items.Add(title);
-                listBox1.Items.Add("========================");
-                listBox1.Items.Add(String.Format(tabs, "Name", name + " " + surname));
-                listBox1.Items.Add("");
-                listBox1.Items.Add(String.Format(tabs, "Edition", edition));
-                listBox1.Items.Add("");
-                listBox1.Items.Add(String.Format(tabs, "Cellphone", cell));
-                listBox1.Items.Add("");
-                listBox1.Items.Add(String.Format(tabs, "Price","R"+price));
-   
+                    listBox1.Items.Add("\t" + title);
+                    listBox1.Items.Add("");
+                    listBox1.Items.Add("Name");
+                    listBox1.Items.Add("");
+                    listBox1.Items.Add("Edition");
+                    listBox1.Items.Add("");
+                    listBox1.Items.Add("Cellphone");
+                    listBox1.Items.Add("");
+                    listBox1.Items.Add("Price");
+                    listBox1.Items.Add("");
+                    listBox1.Items.Add("");
+                    listBox1.Items.Add(name + " " + surname);
+                    listBox1.Items.Add("");
+                    listBox1.Items.Add(edition);
+                    listBox1.Items.Add("");
+                    listBox1.Items.Add(cell);
+                    listBox1.Items.Add("");
+                    listBox1.Items.Add("R" + price);
+
+                }
+            }
+            catch(System.ArgumentOutOfRangeException a)
+            {
+                MessageBox.Show(a.Message);
             }
         }
     }

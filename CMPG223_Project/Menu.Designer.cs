@@ -80,6 +80,7 @@
             this.yourAdvertsToolStripMenuItem.Name = "yourAdvertsToolStripMenuItem";
             this.yourAdvertsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.yourAdvertsToolStripMenuItem.Text = "Your Adverts";
+            this.yourAdvertsToolStripMenuItem.Click += new System.EventHandler(this.yourAdvertsToolStripMenuItem_Click);
             // 
             // userDetailsToolStripMenuItem
             // 
