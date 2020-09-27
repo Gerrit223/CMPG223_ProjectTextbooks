@@ -36,6 +36,7 @@
             this.userDetailsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.changeDetailsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.logoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.changePasswordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -85,7 +86,8 @@
             // userDetailsToolStripMenuItem
             // 
             this.userDetailsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.changeDetailsToolStripMenuItem});
+            this.changeDetailsToolStripMenuItem,
+            this.changePasswordToolStripMenuItem});
             this.userDetailsToolStripMenuItem.Name = "userDetailsToolStripMenuItem";
             this.userDetailsToolStripMenuItem.Size = new System.Drawing.Size(80, 20);
             this.userDetailsToolStripMenuItem.Text = "User Details";
@@ -103,6 +105,13 @@
             this.logoutToolStripMenuItem.Size = new System.Drawing.Size(57, 20);
             this.logoutToolStripMenuItem.Text = "Logout";
             this.logoutToolStripMenuItem.Click += new System.EventHandler(this.logoutToolStripMenuItem_Click);
+            // 
+            // changePasswordToolStripMenuItem
+            // 
+            this.changePasswordToolStripMenuItem.Name = "changePasswordToolStripMenuItem";
+            this.changePasswordToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.changePasswordToolStripMenuItem.Text = "Change Password";
+            this.changePasswordToolStripMenuItem.Click += new System.EventHandler(this.changePasswordToolStripMenuItem_Click);
             // 
             // Menu
             // 
@@ -131,5 +140,6 @@
         private System.Windows.Forms.ToolStripMenuItem userDetailsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem changeDetailsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem logoutToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem changePasswordToolStripMenuItem;
     }
 }

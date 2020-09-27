@@ -68,5 +68,12 @@ namespace CMPG223_Project
             cd.MdiParent = this;
             cd.Show();
         }
+
+        private void changePasswordToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ChangePassword cp = new ChangePassword();
+            cp.MdiParent = this;
+            cp.Show();
+        }
     }
 }
