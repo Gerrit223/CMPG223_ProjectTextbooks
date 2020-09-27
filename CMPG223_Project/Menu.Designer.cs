@@ -64,21 +64,21 @@
             // makeAdvertToolStripMenuItem1
             // 
             this.makeAdvertToolStripMenuItem1.Name = "makeAdvertToolStripMenuItem1";
-            this.makeAdvertToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.makeAdvertToolStripMenuItem1.Size = new System.Drawing.Size(146, 22);
             this.makeAdvertToolStripMenuItem1.Text = "Make Adverts";
             this.makeAdvertToolStripMenuItem1.Click += new System.EventHandler(this.makeAdvertToolStripMenuItem1_Click);
             // 
             // viewAdvertToolStripMenuItem
             // 
             this.viewAdvertToolStripMenuItem.Name = "viewAdvertToolStripMenuItem";
-            this.viewAdvertToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.viewAdvertToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.viewAdvertToolStripMenuItem.Text = "View Adverts";
             this.viewAdvertToolStripMenuItem.Click += new System.EventHandler(this.viewAdvertToolStripMenuItem_Click);
             // 
             // yourAdvertsToolStripMenuItem
             // 
             this.yourAdvertsToolStripMenuItem.Name = "yourAdvertsToolStripMenuItem";
-            this.yourAdvertsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.yourAdvertsToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.yourAdvertsToolStripMenuItem.Text = "Your Adverts";
             this.yourAdvertsToolStripMenuItem.Click += new System.EventHandler(this.yourAdvertsToolStripMenuItem_Click);
             // 
@@ -89,12 +89,14 @@
             this.userDetailsToolStripMenuItem.Name = "userDetailsToolStripMenuItem";
             this.userDetailsToolStripMenuItem.Size = new System.Drawing.Size(80, 20);
             this.userDetailsToolStripMenuItem.Text = "User Details";
+            this.userDetailsToolStripMenuItem.Click += new System.EventHandler(this.userDetailsToolStripMenuItem_Click);
             // 
             // changeDetailsToolStripMenuItem
             // 
             this.changeDetailsToolStripMenuItem.Name = "changeDetailsToolStripMenuItem";
-            this.changeDetailsToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
+            this.changeDetailsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.changeDetailsToolStripMenuItem.Text = "Change Details";
+            this.changeDetailsToolStripMenuItem.Click += new System.EventHandler(this.changeDetailsToolStripMenuItem_Click);
             // 
             // logoutToolStripMenuItem
             // 
