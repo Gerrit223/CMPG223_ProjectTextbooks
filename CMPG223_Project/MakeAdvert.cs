@@ -20,7 +20,7 @@ namespace CMPG223_Project
         public DataSet ds;
         public SqlDataReader datread;
         public SqlCommand cmd;
-        public string insert , constr = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\CMPG223 Project\CMPG223_Project\CMPG223_Project\Textbooks.mdf;Integrated Security = True";
+        public string insert , constr = @"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = C:\Users\tinus\Desktop\CMPG223 Final\CMPG223_Project\Textbooks.mdf; Integrated Security = True";
         public int clientId, bookId, authorId; //primary key values
         public MakeAdvert(int id)
         {
@@ -33,7 +33,7 @@ namespace CMPG223_Project
         {
             string sqlStatement = sql;
             int primarykey;
-            using (conn = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = E:\CMPG223 Project\CMPG223_Project\CMPG223_Project\Textbooks.mdf; Integrated Security = True"))
+            using (conn = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = C:\Users\tinus\Desktop\CMPG223 Final\CMPG223_Project\Textbooks.mdf; Integrated Security = True"))
             {
                 conn.Open();
                 cmd = new SqlCommand(sqlStatement, conn);
@@ -131,7 +131,7 @@ namespace CMPG223_Project
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             try
             {
-                string constr = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\CMPG223 Project\CMPG223_Project\CMPG223_Project\Textbooks.mdf;Integrated Security=True";
+                string constr = @"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = C:\Users\tinus\Desktop\CMPG223 Final\CMPG223_Project\Textbooks.mdf; Integrated Security = True";
                 conn = new SqlConnection(constr);
                 conn.Open();
                 conn.Close();

@@ -89,7 +89,6 @@
             this.userDetailsToolStripMenuItem.Name = "userDetailsToolStripMenuItem";
             this.userDetailsToolStripMenuItem.Size = new System.Drawing.Size(80, 20);
             this.userDetailsToolStripMenuItem.Text = "User Details";
-            this.userDetailsToolStripMenuItem.Click += new System.EventHandler(this.userDetailsToolStripMenuItem_Click);
             // 
             // changeDetailsToolStripMenuItem
             // 

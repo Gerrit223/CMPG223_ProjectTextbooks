@@ -21,7 +21,7 @@ namespace CMPG223_Project
         public SqlCommand comm;
         public SqlDataReader datread;
         public DataTable dt;
-        public string constr = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\CMPG223 Project\CMPG223_Project\CMPG223_Project\Textbooks.mdf;Integrated Security=True";
+        public string constr = @"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = C:\Users\tinus\Desktop\CMPG223 Final\CMPG223_Project\Textbooks.mdf; Integrated Security = True";
         public ViewAdvert(int id)
         {
             InitializeComponent();
@@ -31,7 +31,7 @@ namespace CMPG223_Project
         {
             string sqlStatement = sql;
             int primarykey;
-            using (conn = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = E:\CMPG223 Project\CMPG223_Project\CMPG223_Project\Textbooks.mdf; Integrated Security = True"))
+            using (conn = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = C:\Users\tinus\Desktop\CMPG223 Final\CMPG223_Project\Textbooks.mdf; Integrated Security = True"))
             {
                 conn.Open();
                 comm = new SqlCommand(sqlStatement, conn);
@@ -57,7 +57,7 @@ namespace CMPG223_Project
         {
             string sqlStatement = sql;
             string value;
-            using (conn = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = E:\CMPG223 Project\CMPG223_Project\CMPG223_Project\Textbooks.mdf; Integrated Security = True"))
+            using (conn = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = C:\Users\tinus\Desktop\CMPG223 Final\CMPG223_Project\Textbooks.mdf; Integrated Security = True"))
             {
                 conn.Open();
                 comm = new SqlCommand(sqlStatement, conn);

@@ -61,5 +61,12 @@ namespace CMPG223_Project
         {
 
         }
+
+        private void changeDetailsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ChangeDetails cd = new ChangeDetails();
+            cd.MdiParent = this;
+            cd.Show();
+        }
     }
 }
