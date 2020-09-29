@@ -58,7 +58,7 @@ namespace CMPG223_Project
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             try
             {
-                string constr = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Renier Botha\Documents\IT2020\CMPG223\FinalProg\CMPG223_Project\TextbookDB.mdf;Integrated Security=True";
+                string constr = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\Documents\IT2020\CMPG223\New\CMPG223_Project\TextbookDB.mdf;Integrated Security=True";
                 conn = new SqlConnection(constr);
                 conn.Open();
                 conn.Close();
