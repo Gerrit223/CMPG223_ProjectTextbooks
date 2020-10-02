@@ -136,6 +136,7 @@
             this.Controls.Add(this.grpTable);
             this.Name = "Delete";
             this.Text = "Delete";
+            this.Load += new System.EventHandler(this.Delete_Load);
             this.grpTable.ResumeLayout(false);
             this.grpTable.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
