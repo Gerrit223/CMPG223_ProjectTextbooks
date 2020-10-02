@@ -93,8 +93,9 @@
             // changeDetailsToolStripMenuItem
             // 
             this.changeDetailsToolStripMenuItem.Name = "changeDetailsToolStripMenuItem";
-            this.changeDetailsToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
+            this.changeDetailsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.changeDetailsToolStripMenuItem.Text = "Change Details";
+            this.changeDetailsToolStripMenuItem.Click += new System.EventHandler(this.changeDetailsToolStripMenuItem_Click);
             // 
             // logoutToolStripMenuItem
             // 
