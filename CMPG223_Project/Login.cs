@@ -20,7 +20,7 @@ namespace CMPG223_Project
         public SqlDataReader datread;
         public DataTable dt;
         public int ClientIdValue;
-        public string constr = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\CMPG 223 NEWCLONE\CMPG223_Project\Textbooks.mdf;Integrated Security=True";
+        public string constr = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Renier Botha\Documents\IT2020\CMPG223\FinalProg\CMPG223_Project\TextbookDB.mdf;Integrated Security=True";
         public Login()
         {
             
@@ -66,7 +66,9 @@ namespace CMPG223_Project
            username = txtEmail.Text;
             if (username == "admin" && password == "admin")
             {
-               /////////// Redirect ///////////// 
+                Admin a = new Admin();
+                a.ShowDialog();
+                this.Close();
             }
             else
             {
