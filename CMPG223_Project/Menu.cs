@@ -25,11 +25,6 @@ namespace CMPG223_Project
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
         }
 
-        private void viewAdvertsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void makeAdvertToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             MakeAdvert ma = new MakeAdvert(Client);
@@ -46,8 +41,6 @@ namespace CMPG223_Project
                 l1.ShowDialog();
                 this.Close();
             }
-
-            
         }
 
         private void viewAdvertToolStripMenuItem_Click(object sender, EventArgs e)
@@ -59,21 +52,16 @@ namespace CMPG223_Project
 
         private void yourAdvertsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            YourAdvert ya = new YourAdvert(Client);
+            ya.MdiParent = this;
+            ya.Show();
         }
 
         private void changeDetailsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ChangeDetails cd = new ChangeDetails();
-            cd.MdiParent = this;
-            cd.Show();
-        }
-
-        private void changePasswordToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            ChangePassword cp = new ChangePassword();
-            cp.MdiParent = this;
-            cp.Show();
+            ChangeDetails dt = new ChangeDetails(Client);
+            dt.MdiParent = this;
+            dt.Show();
         }
     }
 }

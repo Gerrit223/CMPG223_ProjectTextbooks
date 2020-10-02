@@ -20,7 +20,7 @@ namespace CMPG223_Project
         public DataSet ds;
         public SqlDataReader datread;
         public SqlCommand cmd;
-        public string insert , constr = @"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = C:\Users\tinus\Desktop\CMPG223 Final\CMPG223_Project\Textbooks.mdf; Integrated Security = True";
+        public string insert , constr = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\Documents\IT2020\CMPG223\New\CMPG223_Project\TextbookDB.mdf;Integrated Security=True";
         public int clientId, bookId, authorId; //primary key values
         public MakeAdvert(int id)
         {
@@ -33,7 +33,7 @@ namespace CMPG223_Project
         {
             string sqlStatement = sql;
             int primarykey;
-            using (conn = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = C:\Users\tinus\Desktop\CMPG223 Final\CMPG223_Project\Textbooks.mdf; Integrated Security = True"))
+            using (conn = new SqlConnection(constr))
             {
                 conn.Open();
                 cmd = new SqlCommand(sqlStatement, conn);
@@ -95,6 +95,7 @@ namespace CMPG223_Project
 
                 string sqlBookId = "SELECT BookId FROM Books WHERE ISBN = '" + isbn + "' AND Title = '" + title + "' AND Edition = '" + edition + "' AND Price = '" + price + "' ";
                 bookId = getPrimaryKeyValue(sqlBookId);
+
                 //INSERT INTO BOOKADVERTS
                 insert = "INSERT INTO BookAdverts VALUES(@ClientId,@BookId,@DateAdded)";
                 conn = new SqlConnection(constr);
@@ -118,7 +119,13 @@ namespace CMPG223_Project
                 conn.Close();
 
                 MessageBox.Show("Advertisement made!", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+                txtISBN.Clear();
+                txtTitle.Clear();
+                txtEdition.Clear();
+                txtPrice.Clear();
+                txtAuthorName.Clear();
+                txtAuthorSurname.Clear();
+                txtISBN.Focus();
             }
             catch (SqlException error)
             {
@@ -131,7 +138,7 @@ namespace CMPG223_Project
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             try
             {
-                string constr = @"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = C:\Users\tinus\Desktop\CMPG223 Final\CMPG223_Project\Textbooks.mdf; Integrated Security = True";
+                string constr = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\Documents\IT2020\CMPG223\New\CMPG223_Project\TextbookDB.mdf;Integrated Security=True";
                 conn = new SqlConnection(constr);
                 conn.Open();
                 conn.Close();
