@@ -25,11 +25,6 @@ namespace CMPG223_Project
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
         }
 
-        private void viewAdvertsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void makeAdvertToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             MakeAdvert ma = new MakeAdvert(Client);
