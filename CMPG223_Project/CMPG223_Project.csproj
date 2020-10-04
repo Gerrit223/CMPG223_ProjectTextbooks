@@ -85,6 +85,12 @@
     <Compile Include="ChangeDetails.Designer.cs">
       <DependentUpon>ChangeDetails.cs</DependentUpon>
     </Compile>
+    <Compile Include="ClientsUpdate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ClientsUpdate.Designer.cs">
+      <DependentUpon>ClientsUpdate.cs</DependentUpon>
+    </Compile>
     <Compile Include="Delete.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -147,6 +153,9 @@
     <EmbeddedResource Include="ChangeDetails.resx">
       <DependentUpon>ChangeDetails.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ClientsUpdate.resx">
+      <DependentUpon>ClientsUpdate.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Delete.resx">
       <DependentUpon>Delete.cs</DependentUpon>
     </EmbeddedResource>
@@ -206,12 +215,12 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="TextbookDB.mdf">
+    <Content Include="Textbooks.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="TextbookDB_log.ldf">
+    <Content Include="Textbooks_log.ldf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <DependentUpon>TextbookDB.mdf</DependentUpon>
+      <DependentUpon>Textbooks.mdf</DependentUpon>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -55,5 +55,12 @@ namespace CMPG223_Project
                 this.Close();
             }
         }
+
+        private void clientsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ClientsUpdate cu = new ClientsUpdate();
+            cu.MdiParent = this;
+            cu.Show();
+        }
     }
 }

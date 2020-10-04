@@ -21,7 +21,7 @@ namespace CMPG223_Project
         public SqlDataReader datread;
         public DataTable dt;
         public int id;
-        public string constr = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\Documents\IT2020\CMPG223\New\CMPG223_Project\TextbookDB.mdf;Integrated Security=True";
+        public string constr = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\tinus\Desktop\CMPG223(v2)\CMPG223_Project\Textbooks.mdf;Integrated Security = True";
         public Delete()
         {
             InitializeComponent();
@@ -172,6 +172,11 @@ namespace CMPG223_Project
         private void radClient_CheckedChanged(object sender, EventArgs e)
         {
             DisplayAll("SELECT * FROM Clients");
+        }
+
+        private void Delete_Load(object sender, EventArgs e)
+        {
+
         }
     }
 
