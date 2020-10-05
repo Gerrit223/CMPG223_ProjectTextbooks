@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.ComponentModel.Design.Serialization;
-
+// Nuwe Weergame
 namespace CMPG223_Project
 {
     public partial class Delete : Form
