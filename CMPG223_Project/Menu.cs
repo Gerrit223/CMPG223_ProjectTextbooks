@@ -22,6 +22,7 @@ namespace CMPG223_Project
 
         private void Menu_Load(object sender, EventArgs e)
         {
+            MessageBox.Show(Client.ToString());
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
         }
 

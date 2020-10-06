@@ -60,10 +60,8 @@ namespace CMPG223_Project
 
         private void button1_Click(object sender, EventArgs e)
         {
-           string username, password;
-
-           password = txtPassowrd.Text;
-           username = txtEmail.Text;
+          string password = txtPassowrd.Text;
+          string  username = txtEmail.Text;
             if (username == "admin" && password == "admin")
             {
                 Admin a = new Admin();
@@ -105,7 +103,7 @@ namespace CMPG223_Project
                     }
                     else
                     {
-                        MessageBox.Show("Username/Password is wrong","Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                        MessageBox.Show("Username/Password incorrect","Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
                     }
                     conn.Close();
 

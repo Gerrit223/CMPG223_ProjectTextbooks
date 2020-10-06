@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.ComponentModel.Design.Serialization;
-
+// Nuwe Weergame
 namespace CMPG223_Project
 {
     public partial class Delete : Form
@@ -21,12 +21,27 @@ namespace CMPG223_Project
         public SqlDataReader datread;
         public DataTable dt;
         public int id;
-        public string constr = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\tinus\Desktop\CMPG223(v2)\CMPG223_Project\Textbooks.mdf;Integrated Security = True";
+        public string constr = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\Documents\IT2020\CMPG223\New\CMPG223_Project\TextbookDB.mdf;Integrated Security=True";
         public Delete()
         {
             InitializeComponent();
         }
 
+        public int getAmount(string sql)
+        {
+            int count = 0;
+            conn = new SqlConnection(constr);
+            conn.Open();
+            comm = new SqlCommand(sql, conn);
+            datread = comm.ExecuteReader();
+
+            while (datread.Read())
+            {
+                count++;
+            }
+            conn.Close();
+            return count;
+        }
         public int getPrimaryKeyValue(string sql)
         {
             int primarykey;
@@ -109,7 +124,7 @@ namespace CMPG223_Project
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            int id2;
+            int id2,loop;
             if (radBook.Checked)
             {
                 DialogResult delete = MessageBox.Show("Are you sure you want to delete this Book?", "Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
@@ -148,13 +163,18 @@ namespace CMPG223_Project
                         {
                             dataGridView1.CurrentRow.Selected = true;
                             id = int.Parse(dataGridView1.Rows[e.RowIndex].Cells["ClientId"].FormattedValue.ToString());
-                            id2 = getPrimaryKeyValue("SELECT BookId from BookAdverts WHERE ClientId = '" + id + "'");
-                            if (id2 == -1)
-                            {
-                                DeleteEntry("Delete FROM BookAuthors WHERE BookId = '" + id2 + "'");
-                                DeleteEntry("Delete FROM BookAdverts WHERE BookId = '" + id2 + "'");
-                                DeleteEntry("Delete FROM Books WHERE BookId = '" + id2 + "'");
-                            }
+
+                                loop = getAmount("SELECT * FROM BookAdverts WHERE ClientId = '" + id + "'");
+                                if (loop > 0)
+                                {
+                                    for (int i = 0; i < loop; i++)
+                                    {
+                                        id2 = getPrimaryKeyValue("SELECT BookId from BookAdverts WHERE ClientId = '" + id + "'");
+                                        DeleteEntry("Delete FROM BookAuthors WHERE BookId = '" + id2 + "'");
+                                        DeleteEntry("Delete FROM BookAdverts WHERE BookId = '" + id2 + "'");
+                                        DeleteEntry("Delete FROM Books WHERE BookId = '" + id2 + "'");
+                                    }
+                                }
 
                             DeleteEntry("Delete FROM Clients WHERE ClientId = '" + id + "'");
                             MessageBox.Show("Client has been deleted", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -176,12 +196,7 @@ namespace CMPG223_Project
 
         private void Delete_Load(object sender, EventArgs e)
         {
-
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
         }
     }
 
