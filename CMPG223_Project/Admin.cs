@@ -62,5 +62,10 @@ namespace CMPG223_Project
             cu.MdiParent = this;
             cu.Show();
         }
+
+        private void updateDatabaseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -183,6 +183,9 @@
     <EmbeddedResource Include="Register.resx">
       <DependentUpon>Register.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="TextbookTotal.resx">
+      <DependentUpon>TextbookTotal.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ViewAdvert.resx">
       <DependentUpon>ViewAdvert.cs</DependentUpon>
     </EmbeddedResource>
