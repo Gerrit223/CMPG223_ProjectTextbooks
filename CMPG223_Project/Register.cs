@@ -18,6 +18,9 @@ namespace CMPG223_Project
         public DataSet ds;
         public SqlDataReader datread;
         public SqlCommand cmd;
+        string email, confirmPassword;
+        string constr = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\Documents\IT2020\CMPG223\New\CMPG223_Project\TextbookDB.mdf;Integrated Security=True";
+        int ClientIdValue;
         public Register()
         {
             InitializeComponent();
@@ -58,7 +61,6 @@ namespace CMPG223_Project
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             try
             {
-                string constr = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\CMPG 223 NEWCLONE\CMPG223_Project\Textbooks.mdf;Integrated Security=True";
                 conn = new SqlConnection(constr);
                 conn.Open();
                 conn.Close();
@@ -73,7 +75,7 @@ namespace CMPG223_Project
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string name, surname, email, cellnr, password, confirmPassword;
+            string name, surname, cellnr, password;
             bool digits, emailAvailable;
 
 
@@ -119,14 +121,6 @@ namespace CMPG223_Project
             }          
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            Login login = new Login();
-            login.ShowDialog();
-            this.WindowState = System.Windows.Forms.FormWindowState.Minimized;
-            this.Close();
-        }
-
         private void timer1_Tick(object sender, EventArgs e)
         {
             this.progressBar1.Increment(10);
@@ -135,6 +129,27 @@ namespace CMPG223_Project
             {
                 this.timer1.Stop();
                 MessageBox.Show("NEW USER ADDED","Users",MessageBoxButtons.OK,MessageBoxIcon.Information);
+
+                string sqlStatement = "SELECT ClientId FROM Clients WHERE email = '" + email + "' AND password = '" + confirmPassword + "' ";
+
+                using (conn = new SqlConnection(constr))
+                {
+                    cmd = new SqlCommand(sqlStatement, conn);
+                    try
+                    {
+                        conn.Open();
+                        ClientIdValue = (int)cmd.ExecuteScalar();
+                        conn.Close();
+                        Menu menu = new Menu(ClientIdValue);
+                        menu.ShowDialog();
+                        this.Close();
+
+                    }
+                    catch (SqlException error)
+                    {
+                        MessageBox.Show(error.Message);
+                    }
+                }
                 progressBar1.Value = 0;
                 progressBar1.Visible = false;
             }
