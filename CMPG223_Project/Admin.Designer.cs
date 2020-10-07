@@ -65,15 +65,14 @@
             // viewAllDataToolStripMenuItem
             // 
             this.viewAllDataToolStripMenuItem.Name = "viewAllDataToolStripMenuItem";
-            this.viewAllDataToolStripMenuItem.Size = new System.Drawing.Size(232, 22);
+            this.viewAllDataToolStripMenuItem.Size = new System.Drawing.Size(223, 22);
             this.viewAllDataToolStripMenuItem.Text = "Monthly listing of textbooks";
             this.viewAllDataToolStripMenuItem.Click += new System.EventHandler(this.viewAllDataToolStripMenuItem_Click);
             // 
             // totalTextbooksForTheMonthToolStripMenuItem
             // 
             this.totalTextbooksForTheMonthToolStripMenuItem.Name = "totalTextbooksForTheMonthToolStripMenuItem";
-            this.totalTextbooksForTheMonthToolStripMenuItem.Size = new System.Drawing.Size(232, 22);
-            this.totalTextbooksForTheMonthToolStripMenuItem.Text = "Total Textbooks for the month";
+            this.totalTextbooksForTheMonthToolStripMenuItem.Size = new System.Drawing.Size(223, 22);
             this.totalTextbooksForTheMonthToolStripMenuItem.Click += new System.EventHandler(this.totalTextbooksForTheMonthToolStripMenuItem_Click);
             // 
             // updateDatabaseToolStripMenuItem
