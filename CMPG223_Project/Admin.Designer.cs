@@ -31,7 +31,7 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.requestReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewAllDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.totalTextbooksForTheMonthToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.topUsersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.updateDatabaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.booksToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.authorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -57,7 +57,7 @@
             // 
             this.requestReportToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.viewAllDataToolStripMenuItem,
-            this.totalTextbooksForTheMonthToolStripMenuItem});
+            this.topUsersToolStripMenuItem});
             this.requestReportToolStripMenuItem.Name = "requestReportToolStripMenuItem";
             this.requestReportToolStripMenuItem.Size = new System.Drawing.Size(99, 20);
             this.requestReportToolStripMenuItem.Text = "Request Report";
@@ -69,11 +69,12 @@
             this.viewAllDataToolStripMenuItem.Text = "Monthly listing of textbooks";
             this.viewAllDataToolStripMenuItem.Click += new System.EventHandler(this.viewAllDataToolStripMenuItem_Click);
             // 
-            // totalTextbooksForTheMonthToolStripMenuItem
+            // topUsersToolStripMenuItem
             // 
-            this.totalTextbooksForTheMonthToolStripMenuItem.Name = "totalTextbooksForTheMonthToolStripMenuItem";
-            this.totalTextbooksForTheMonthToolStripMenuItem.Size = new System.Drawing.Size(223, 22);
-            this.totalTextbooksForTheMonthToolStripMenuItem.Click += new System.EventHandler(this.totalTextbooksForTheMonthToolStripMenuItem_Click);
+            this.topUsersToolStripMenuItem.Name = "topUsersToolStripMenuItem";
+            this.topUsersToolStripMenuItem.Size = new System.Drawing.Size(223, 22);
+            this.topUsersToolStripMenuItem.Text = "Top Users";
+            this.topUsersToolStripMenuItem.Click += new System.EventHandler(this.topUsersToolStripMenuItem_Click);
             // 
             // updateDatabaseToolStripMenuItem
             // 
@@ -96,6 +97,7 @@
             this.authorToolStripMenuItem.Name = "authorToolStripMenuItem";
             this.authorToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.authorToolStripMenuItem.Text = "Author";
+            this.authorToolStripMenuItem.Click += new System.EventHandler(this.authorToolStripMenuItem_Click);
             // 
             // deleteToolStripMenuItem
             // 
@@ -136,9 +138,9 @@
         private System.Windows.Forms.ToolStripMenuItem viewAllDataToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem updateDatabaseToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem totalTextbooksForTheMonthToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem booksToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem authorToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem logoutToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem topUsersToolStripMenuItem;
     }
 }

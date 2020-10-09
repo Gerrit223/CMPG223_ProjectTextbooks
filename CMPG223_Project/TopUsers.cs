@@ -8,11 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
-using System.Globalization;
-
 namespace CMPG223_Project
 {
-    public partial class MonthlyTextbooks : Form
+    public partial class TopUsers : Form
     {
         public SqlConnection conn;
         public SqlDataAdapter adap;
@@ -21,99 +19,94 @@ namespace CMPG223_Project
         public SqlDataReader datread;
         public DataTable dt;
         public string constr = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\CMPG 223 NEWCLONE\CMPG223_Project\Textbooks.mdf;Integrated Security=True";
-        public MonthlyTextbooks()
+        public TopUsers()
         {
             InitializeComponent();
         }
 
-        private void MonthlyTextbooks_Load(object sender, EventArgs e)
+        private void TopUsers_Load(object sender, EventArgs e)
         {
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            int date = 0;
-            int total = 0;
-            
 
-           int choice = comboBox1.SelectedIndex;
-           switch(choice)
+            int date = 0;        
+            int choice = comboBox1.SelectedIndex;
+            switch (choice)
             {
                 case 0:
                     date = 1;
-                    lblHeading.Text = "Report for Adverts made in January";
+                    lblHeading.Text = "Top Users for January";
                     break;
                 case 1:
                     date = 2;
-                    lblHeading.Text = "Report for Adverts made in February";
+                    lblHeading.Text = "Top Users for February";
                     break;
                 case 2:
                     date = 3;
-                    lblHeading.Text = "Report for Adverts made in March";
+                    lblHeading.Text = "Top Users for March";
                     break;
                 case 3:
                     date = 4;
-                    lblHeading.Text = "Report for Adverts made in April";
+                    lblHeading.Text = "Top Users for April";
                     break;
                 case 4:
                     date = 5;
-                    lblHeading.Text = "Report for Adverts made in May";
+                    lblHeading.Text = "Top Users for May";
                     break;
                 case 5:
                     date = 6;
-                    lblHeading.Text = "Report for Adverts made in June";
+                    lblHeading.Text = "Top Users for June";
                     break;
                 case 6:
                     date = 7;
-                    lblHeading.Text = "Report for Adverts made in July";
+                    lblHeading.Text = "Top Users for July";
                     break;
                 case 7:
                     date = 8;
-                    lblHeading.Text = "Report for Adverts made in August";
+                    lblHeading.Text = "Top Users for August";
                     break;
                 case 8:
                     date = 9;
-                    lblHeading.Text = "Report for Adverts made in September";
+                    lblHeading.Text = "Top Users for September";
                     break;
                 case 9:
                     date = 10;
-                    lblHeading.Text = "Report for Adverts made in October";
+                    lblHeading.Text = "Top Users for October";
                     break;
                 case 10:
                     date = 11;
-                    lblHeading.Text = "Report for Adverts made in November";
+                    lblHeading.Text = "Top Users for November";
                     break;
                 case 11:
                     date = 12;
-                    lblHeading.Text = "Report for Adverts made in December";
+                    lblHeading.Text = "Top Users for December";
                     break;
                 default:
                     break;
             }
-
             try
             {
                 conn = new SqlConnection(constr);
                 conn.Open();
-                comm = new SqlCommand("SELECT c.Name, c.Surname, b.Title, ba.DateAdded From Books as b, BookAdverts as ba, Clients as c Where c.ClientId = ba.ClientId AND b.BookId = ba.BookId AND MONTH(ba.DateAdded) = '" + date + "' ", conn);
+                comm = new SqlCommand("SELECT Clients.Name, Clients.Surname, COUNT(BookAdverts.BookAdvertId) AS TotalAdverts FROM BookAdverts LEFT JOIN Clients ON BookAdverts.ClientId=Clients.ClientId WHERE MONTH(BookAdverts.DateAdded) = '"+date+"' GROUP BY Name,Surname ORDER BY TotalAdverts DESC", conn);
                 comm.Connection = conn;
                 ds = new DataSet();
-                SqlDataAdapter ads = new SqlDataAdapter("SELECT c.Name, c.Surname, b.Title, ba.DateAdded From Books as b, BookAdverts as ba, Clients as c Where c.ClientId = ba.ClientId AND b.BookId = ba.BookId AND MONTH(ba.DateAdded) = '" + date + "' ", conn);
+                SqlDataAdapter ads = new SqlDataAdapter("SELECT Clients.Name,Clients.Surname, COUNT(BookAdverts.BookAdvertId) AS TotalAdverts FROM BookAdverts LEFT JOIN Clients ON BookAdverts.ClientId=Clients.ClientId WHERE MONTH(BookAdverts.DateAdded) = '" + date + "' GROUP BY Name,Surname ORDER BY TotalAdverts DESC", conn);
                 ads.SelectCommand = comm;
                 ads.Fill(ds, "Report");
                 dataGridView1.DataSource = ds;
                 dataGridView1.DataMember = "Report";
+                lblDate.Text = "Report generated on" + DateTime.Now.ToString("f");
                 conn.Close();
-                total = dataGridView1.RowCount;
-                lblTotal.Text = "Total Adverts: " + total;
-                lblDate.Text = "Report requested on: " + DateTime.Now.ToString("f");
-
             }
             catch (SqlException error)
             {
                 MessageBox.Show(error.Message);
             }
+
         }
     }
 }

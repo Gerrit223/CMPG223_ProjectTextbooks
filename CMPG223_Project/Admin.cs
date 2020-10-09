@@ -24,12 +24,6 @@ namespace CMPG223_Project
             mt.Show();
         }
 
-        private void totalTextbooksForTheMonthToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            TextbookTotal tt = new TextbookTotal();
-            tt.MdiParent = this;
-            tt.Show();
-        }
 
         private void booksToolStripMenuItem1_Click(object sender, EventArgs e)
         {
@@ -54,6 +48,20 @@ namespace CMPG223_Project
                 l1.ShowDialog();
                 this.Close();
             }
+        }
+
+        private void topUsersToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            TopUsers tu1 = new TopUsers();
+            tu1.MdiParent = this;
+            tu1.Show();
+        }
+
+        private void authorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Author au1 = new Author();
+            au1.MdiParent = this;
+            au1.Show();
         }
     }
 }
