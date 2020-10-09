@@ -12,14 +12,16 @@ namespace CMPG223_Project
 {
     public partial class Admin : Form
     {
-        public Admin()
+        public string constr;
+        public Admin(string myConstr)
         {
+            constr = myConstr;
             InitializeComponent();
         }
 
         private void viewAllDataToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MonthlyTextbooks mt = new MonthlyTextbooks();
+            MonthlyTextbooks mt = new MonthlyTextbooks(constr);
             mt.MdiParent = this;
             mt.Show();
         }
@@ -27,14 +29,14 @@ namespace CMPG223_Project
 
         private void booksToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            Books b = new Books();
+            Books b = new Books(constr);
             b.MdiParent = this;
             b.Show();
         }
 
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Delete d = new Delete();
+            Delete d = new Delete(constr);
             d.MdiParent = this;
             d.Show();
         }
@@ -52,14 +54,14 @@ namespace CMPG223_Project
 
         private void topUsersToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            TopUsers tu1 = new TopUsers();
+            TopUsers tu1 = new TopUsers(constr);
             tu1.MdiParent = this;
             tu1.Show();
         }
 
         private void authorToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Author au1 = new Author();
+            Author au1 = new Author(constr);
             au1.MdiParent = this;
             au1.Show();
         }

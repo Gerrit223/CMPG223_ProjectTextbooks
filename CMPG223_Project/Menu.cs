@@ -12,23 +12,23 @@ namespace CMPG223_Project
 {
     public partial class Menu : Form
     {
+        public string constr;
         public int Client;
-        public Menu(int ClientIdValue)
+        public Menu(int ClientIdValue, string myString)
         {
             InitializeComponent();
             Client = ClientIdValue;
-
+            constr = myString;
         }
 
         private void Menu_Load(object sender, EventArgs e)
         {
-            MessageBox.Show(Client.ToString());
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
         }
 
         private void makeAdvertToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            MakeAdvert ma = new MakeAdvert(Client);
+            MakeAdvert ma = new MakeAdvert(Client,constr);
             ma.MdiParent = this;
             ma.Show();
         }
@@ -46,21 +46,21 @@ namespace CMPG223_Project
 
         private void viewAdvertToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ViewAdvert va = new ViewAdvert(Client);
+            ViewAdvert va = new ViewAdvert(Client,constr);
             va.MdiParent = this;
             va.Show();
         }
 
         private void yourAdvertsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            YourAdvert ya = new YourAdvert(Client);
+            YourAdvert ya = new YourAdvert(Client,constr);
             ya.MdiParent = this;
             ya.Show();
         }
 
         private void changeDetailsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ChangeDetails dt = new ChangeDetails(Client);
+            ChangeDetails dt = new ChangeDetails(Client,constr);
             dt.MdiParent = this;
             dt.Show();
         }

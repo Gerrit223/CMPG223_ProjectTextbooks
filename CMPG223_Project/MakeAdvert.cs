@@ -20,11 +20,12 @@ namespace CMPG223_Project
         public DataSet ds;
         public SqlDataReader datread;
         public SqlCommand cmd;
-        public string insert , constr = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\Documents\IT2020\CMPG223\New\CMPG223_Project\TextbookDB.mdf;Integrated Security=True";
+        public string insert, constr;
         public int clientId, bookId, authorId; //primary key values
-        public MakeAdvert(int id)
+        public MakeAdvert(int id,string myConstr)
         {
             clientId = id;
+            constr = myConstr;
             InitializeComponent();
 
         }

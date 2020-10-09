@@ -18,11 +18,11 @@ namespace CMPG223_Project
         public DataSet ds;
         public SqlDataReader datread;
         public SqlCommand cmd;
-        string email, confirmPassword;
-        string constr = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\Documents\IT2020\CMPG223\New\CMPG223_Project\TextbookDB.mdf;Integrated Security=True";
+        string email, confirmPassword, constr;
         int ClientIdValue;
-        public Register()
+        public Register(string myConstr)
         {
+            constr = myConstr;
             InitializeComponent();
         }
 
@@ -56,6 +56,26 @@ namespace CMPG223_Project
                 return true;         
         }
 
+        public bool isCellValid(string cell)
+        {
+            string sql = "SELECT * FROM Clients";
+            conn.Open();
+            cmd = new SqlCommand(sql, conn);
+            datread = cmd.ExecuteReader();
+
+            while (datread.Read())
+            {
+                if (datread.GetValue(4).ToString() == cell)
+                {
+                    conn.Close();
+                    return false;
+                }
+
+            }
+            conn.Close();
+            return true;
+        }
+
         private void Register_Load(object sender, EventArgs e)
         {
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
@@ -76,7 +96,7 @@ namespace CMPG223_Project
         private void button1_Click(object sender, EventArgs e)
         {
             string name, surname, cellnr, password;
-            bool digits, emailAvailable;
+            bool digits, emailAvailable,cellValid;
 
 
             name = txtName.Text;
@@ -88,15 +108,31 @@ namespace CMPG223_Project
 
             digits = isDigits(cellnr);
             emailAvailable = isemailAvailable(email);
+            cellValid = isCellValid(cellnr);
 
-            if(name == "" || surname == "" || email == "" || cellnr == ""|| password != confirmPassword || cellnr.Length != 10 || digits == false || emailAvailable == false)
+            if (name == "" || surname == "" || email == ""|| password != confirmPassword || cellnr.Length != 10 || digits == false || emailAvailable == false || cellValid == false)
             {
+                MessageBox.Show("There are missing/wrong details!", "Details", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 if (emailAvailable == false)
+                {
                     MessageBox.Show("Email has already been taken!", "Email", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtEmail.Clear();
+                }
+                if (cellValid == false)
+                {
+                    MessageBox.Show("Cellphone number is already registered!", "Cellphone", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtCellphone.Clear();
+                }
                 if (password != confirmPassword)
-                    MessageBox.Show("Passwords DO NOT match!","Password", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                else
-                    MessageBox.Show("Enter all of the details correctly!","Client Details", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                {
+                    MessageBox.Show("Passwords DO NOT match!", "Password", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtConfirm.Clear();
+                    txtPassword.Clear();
+                }
+                if (name == "" || surname == "" || email == "" || password == "")
+                {
+                    MessageBox.Show("There are missing fields!", "Fields", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             else
             {
@@ -140,7 +176,7 @@ namespace CMPG223_Project
                         conn.Open();
                         ClientIdValue = (int)cmd.ExecuteScalar();
                         conn.Close();
-                        Menu menu = new Menu(ClientIdValue);
+                        Menu menu = new Menu(ClientIdValue, constr);
                         menu.ShowDialog();
                         this.Close();
 

@@ -17,18 +17,72 @@ namespace CMPG223_Project
         public SqlCommand comm;
         public DataSet ds;
         public SqlDataAdapter adap;
-        public string constr = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\Documents\IT2020\CMPG223\New\CMPG223_Project\TextbookDB.mdf;Integrated Security=True";
-
+        public SqlDataReader datread;
+        public string constr;
         public int clientID;
+        public string email, cell;
 
-        public ChangeDetails(int id)
+        public ChangeDetails(int id, string myConstr)
         {
             clientID = id;
+            constr = myConstr;
             InitializeComponent();
+        }
+
+        public bool isDigits(string cellnr) //Method om te kyk of cell nr. uit digits bestaan
+        {
+            foreach (char c in cellnr)
+            {
+                if (c < '0' || c > '9')
+                    return false;
+            }
+            return true;
+        }
+
+        public bool isemailAvailable(string gEmail)
+        {
+            conn = new SqlConnection(constr);
+            string sql = "SELECT * FROM Clients";
+            conn.Open();
+            comm = new SqlCommand(sql, conn);
+            datread = comm.ExecuteReader();
+
+            while (datread.Read())
+            {
+                if (datread.GetValue(3).ToString() == gEmail)
+                {
+                    conn.Close();
+                    return false;
+                }
+            }
+            conn.Close();
+            return true;
+        }
+
+        public bool isCellValid(string gCell)
+        {
+            conn = new SqlConnection(constr);
+            string sql = "SELECT * FROM Clients";
+            conn.Open();
+            comm = new SqlCommand(sql, conn);
+            datread = comm.ExecuteReader();
+
+            while (datread.Read())
+            {
+                if (datread.GetValue(4).ToString() == gCell)
+                {
+                    conn.Close();
+                    return false;
+                }
+
+            }
+            conn.Close();
+            return true;
         }
 
         public string getStringValue(string sql)
         {
+            conn = new SqlConnection(constr);
             string sqlStatement = sql;
             string value;
             using (conn = new SqlConnection(constr))
@@ -55,22 +109,63 @@ namespace CMPG223_Project
 
         private void btnChange_Click(object sender, EventArgs e)
         {
-            if (txtPassword.Text != txtConfirm.Text )
+            bool digits, emailAvailable, cellValid;
+            bool nEmail = false;
+            bool nCell = false;
+
+            digits = isDigits(txtCell.Text);
+            emailAvailable = isemailAvailable(email);
+            cellValid = isCellValid(txtCell.Text);
+
+            if (email == txtEmail.Text || cell == txtCell.Text)
             {
-                MessageBox.Show("Passwords do not match");
-                txtPassword.Clear();
-                txtConfirm.Clear();
-            }
-            else if (txtEmail.Text == "" || txtCell.Text == "" || txtConfirm.Text == "" || txtCell.Text.Length != 10)
-            {
-                if (txtCell.Text.Length != 10)
+                if (email == txtEmail.Text && emailAvailable == false)
                 {
-                    MessageBox.Show("Cell number is not valid");
-                    txtCell.Clear();
+                    nEmail = true;
                 }
-                else
+                if (cell == txtCell.Text && cellValid == false)
+                {
+                    nCell = true;
+                }
+
+            }
+
+            if (txtEmail.Text == "" || txtCell.Text.Length != 10 || txtPassword.Text == "" || txtPassword.Text != txtConfirm.Text || digits == false || nEmail == false || nCell == false)
+            {
+                MessageBox.Show("There are missing / wrong fields");
+                if (txtEmail.Text == "" || txtCell.Text.Length != 10 || txtPassword.Text == "")
                 {
                     MessageBox.Show("There are missing fields");
+                    if (txtEmail.Text == "")
+                        txtEmail.Clear();
+                    if (txtCell.Text.Length != 10)
+                        txtCell.Clear();
+                    if (txtPassword.Text == "" || txtConfirm.Text == "")
+                    {
+                        txtPassword.Clear();
+                        txtConfirm.Clear();
+                    }
+                }
+                else if (txtPassword.Text != txtConfirm.Text)
+                {
+                    MessageBox.Show("Passwords doesn't match");
+                    txtConfirm.Clear();
+                    txtPassword.Clear();
+                }
+                else if (digits == false)
+                {
+                    MessageBox.Show("Please enter a valid cell number");
+                    txtCell.Clear();
+                }
+                else if (nEmail == false)
+                {
+                    MessageBox.Show("email in use");
+                    txtEmail.Clear();
+                }
+                else if (nCell == false)
+                {
+                    MessageBox.Show("Cellphone number in use");
+                    txtCell.Clear();
                 }
             }
             else
@@ -113,7 +208,8 @@ namespace CMPG223_Project
         private void ChangeDetails_Load(object sender, EventArgs e)
         {
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-
+            email = getStringValue("SELECT email from Clients WHERE ClientId = '" + clientID + "'");
+            cell = getStringValue("SELECT cellnr from Clients WHERE ClientId = '" + clientID + "'");
             lblName.Text = "Changing details for: " + getStringValue("SELECT Name from Clients WHERE ClientId = '" + clientID + "'") + " " + getStringValue("SELECT Surname from Clients WHERE ClientId = '" + clientID + "'");
         }
     }

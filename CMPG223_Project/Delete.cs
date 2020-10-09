@@ -21,9 +21,10 @@ namespace CMPG223_Project
         public SqlDataReader datread;
         public DataTable dt;
         public int id;
-        public string constr = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\Documents\IT2020\CMPG223\New\CMPG223_Project\TextbookDB.mdf;Integrated Security=True";
-        public Delete()
+        public string constr;
+        public Delete(string myConstr)
         {
+            constr = myConstr;
             InitializeComponent();
         }
 

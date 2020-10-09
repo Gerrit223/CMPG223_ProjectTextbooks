@@ -29,7 +29,7 @@ namespace CMPG223_Project
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Register register = new Register();
+            Register register = new Register(constr);
             register.ShowDialog();
             this.WindowState = System.Windows.Forms.FormWindowState.Minimized;
             this.Close();
@@ -64,7 +64,7 @@ namespace CMPG223_Project
           string  username = txtEmail.Text;
             if (username == "admin" && password == "admin")
             {
-                Admin a = new Admin();
+                Admin a = new Admin(constr);
                 a.ShowDialog();
                 this.Close();
             }
@@ -90,7 +90,7 @@ namespace CMPG223_Project
                                 conn.Open();
                                 ClientIdValue = (int)comm.ExecuteScalar();
                                 conn.Close();
-                                Menu menu = new Menu(ClientIdValue);
+                                Menu menu = new Menu(ClientIdValue, constr);
                                 menu.ShowDialog();
                                 this.Close();
 
@@ -104,6 +104,8 @@ namespace CMPG223_Project
                     else
                     {
                         MessageBox.Show("Username/Password incorrect","Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                        txtEmail.Clear();
+                        txtPassowrd.Clear();
                     }
                     conn.Close();
 

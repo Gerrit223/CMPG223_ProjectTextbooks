@@ -20,13 +20,19 @@ namespace CMPG223_Project
         public SqlDataReader datread;
         public DataTable dt;
         public int id;
-        public string constr = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\Documents\IT2020\CMPG223\New\CMPG223_Project\TextbookDB.mdf;Integrated Security=True";
+        public string constr;
 
 
         public string ISBN;
         public string Title;
         public string Edition;
         public string Price;
+
+        public Books(string myConstr)
+        {
+            constr = myConstr;
+            InitializeComponent();
+        }
 
         public string getStringValue(string sql)
         {
@@ -76,10 +82,6 @@ namespace CMPG223_Project
                 MessageBox.Show(error.Message);
             }
 
-        }
-        public Books()
-        {
-            InitializeComponent();
         }
 
         private void Books_Load(object sender, EventArgs e)
