@@ -70,7 +70,8 @@
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 12);
+            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
@@ -89,50 +90,56 @@
             this.dataGridView1.ShowCellToolTips = false;
             this.dataGridView1.ShowEditingIcon = false;
             this.dataGridView1.ShowRowErrors = false;
-            this.dataGridView1.Size = new System.Drawing.Size(751, 240);
-            this.dataGridView1.TabIndex = 7;
+            this.dataGridView1.Size = new System.Drawing.Size(800, 240);
+            this.dataGridView1.TabIndex = 3;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
             // txtFirst
             // 
-            this.txtFirst.Location = new System.Drawing.Point(263, 296);
+            this.txtFirst.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.txtFirst.Location = new System.Drawing.Point(300, 270);
             this.txtFirst.Name = "txtFirst";
-            this.txtFirst.Size = new System.Drawing.Size(100, 20);
-            this.txtFirst.TabIndex = 8;
+            this.txtFirst.Size = new System.Drawing.Size(150, 20);
+            this.txtFirst.TabIndex = 0;
             // 
             // txtLast
             // 
-            this.txtLast.Location = new System.Drawing.Point(263, 350);
+            this.txtLast.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.txtLast.Location = new System.Drawing.Point(300, 310);
             this.txtLast.Name = "txtLast";
-            this.txtLast.Size = new System.Drawing.Size(100, 20);
-            this.txtLast.TabIndex = 9;
+            this.txtLast.Size = new System.Drawing.Size(150, 20);
+            this.txtLast.TabIndex = 1;
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(191, 299);
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label1.Location = new System.Drawing.Point(200, 270);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.Size = new System.Drawing.Size(38, 20);
             this.label1.TabIndex = 10;
-            this.label1.Text = "Name";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.label1.Text = "Name:";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(191, 353);
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label2.Location = new System.Drawing.Point(200, 310);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(49, 13);
+            this.label2.Size = new System.Drawing.Size(52, 20);
             this.label2.TabIndex = 11;
-            this.label2.Text = "Surname";
+            this.label2.Text = "Surname:";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // btnUpdate
             // 
-            this.btnUpdate.Location = new System.Drawing.Point(244, 401);
+            this.btnUpdate.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnUpdate.AutoSize = true;
+            this.btnUpdate.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnUpdate.Location = new System.Drawing.Point(275, 350);
             this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(75, 23);
-            this.btnUpdate.TabIndex = 12;
-            this.btnUpdate.Text = "Update";
+            this.btnUpdate.Size = new System.Drawing.Size(150, 25);
+            this.btnUpdate.TabIndex = 2;
+            this.btnUpdate.Text = "&Update";
             this.btnUpdate.UseVisualStyleBackColor = true;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 

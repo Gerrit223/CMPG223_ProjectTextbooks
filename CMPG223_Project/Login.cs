@@ -38,24 +38,6 @@ namespace CMPG223_Project
         private void Login_Load(object sender, EventArgs e)
         {
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            try
-            {          
-                conn = new SqlConnection(constr);
-                conn.Open();
-                comm = new SqlCommand("SELECT * FROM Clients");
-                comm.Connection = conn;
-                ds = new DataSet();
-                SqlDataAdapter ads = new SqlDataAdapter("SELECT * FROM Clients", conn);
-                ads.SelectCommand = comm;
-                ads.Fill(ds, "Clients");
-                dataGridView1.DataSource = ds;
-                dataGridView1.DataMember = "Clients";
-                conn.Close();
-            }
-            catch (SqlException error)
-            {
-                MessageBox.Show(error.Message);
-            }
         }
 
         private void button1_Click(object sender, EventArgs e)

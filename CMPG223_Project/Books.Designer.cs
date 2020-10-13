@@ -74,7 +74,8 @@
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 25);
+            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
@@ -93,81 +94,91 @@
             this.dataGridView1.ShowCellToolTips = false;
             this.dataGridView1.ShowEditingIcon = false;
             this.dataGridView1.ShowRowErrors = false;
-            this.dataGridView1.Size = new System.Drawing.Size(751, 240);
-            this.dataGridView1.TabIndex = 8;
+            this.dataGridView1.Size = new System.Drawing.Size(800, 240);
+            this.dataGridView1.TabIndex = 5;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
             // txtISBN
             // 
-            this.txtISBN.Location = new System.Drawing.Point(336, 275);
+            this.txtISBN.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.txtISBN.Location = new System.Drawing.Point(250, 270);
             this.txtISBN.Name = "txtISBN";
-            this.txtISBN.Size = new System.Drawing.Size(100, 20);
-            this.txtISBN.TabIndex = 9;
+            this.txtISBN.Size = new System.Drawing.Size(150, 20);
+            this.txtISBN.TabIndex = 0;
             // 
             // txtPrice
             // 
-            this.txtPrice.Location = new System.Drawing.Point(336, 400);
+            this.txtPrice.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.txtPrice.Location = new System.Drawing.Point(250, 390);
             this.txtPrice.Name = "txtPrice";
-            this.txtPrice.Size = new System.Drawing.Size(100, 20);
-            this.txtPrice.TabIndex = 10;
+            this.txtPrice.Size = new System.Drawing.Size(150, 20);
+            this.txtPrice.TabIndex = 3;
             // 
             // txtEdition
             // 
-            this.txtEdition.Location = new System.Drawing.Point(336, 361);
+            this.txtEdition.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.txtEdition.Location = new System.Drawing.Point(250, 350);
             this.txtEdition.Name = "txtEdition";
-            this.txtEdition.Size = new System.Drawing.Size(100, 20);
-            this.txtEdition.TabIndex = 11;
+            this.txtEdition.Size = new System.Drawing.Size(150, 20);
+            this.txtEdition.TabIndex = 2;
             // 
             // txtTitle
             // 
-            this.txtTitle.Location = new System.Drawing.Point(336, 314);
+            this.txtTitle.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.txtTitle.Location = new System.Drawing.Point(250, 310);
             this.txtTitle.Name = "txtTitle";
-            this.txtTitle.Size = new System.Drawing.Size(100, 20);
-            this.txtTitle.TabIndex = 12;
+            this.txtTitle.Size = new System.Drawing.Size(150, 20);
+            this.txtTitle.TabIndex = 1;
             // 
             // lblISBN
             // 
-            this.lblISBN.AutoSize = true;
-            this.lblISBN.Location = new System.Drawing.Point(261, 278);
+            this.lblISBN.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.lblISBN.Location = new System.Drawing.Point(200, 270);
             this.lblISBN.Name = "lblISBN";
-            this.lblISBN.Size = new System.Drawing.Size(32, 13);
+            this.lblISBN.Size = new System.Drawing.Size(35, 20);
             this.lblISBN.TabIndex = 13;
-            this.lblISBN.Text = "ISBN";
+            this.lblISBN.Text = "ISBN:";
+            this.lblISBN.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lblTitle
             // 
-            this.lblTitle.AutoSize = true;
-            this.lblTitle.Location = new System.Drawing.Point(261, 321);
+            this.lblTitle.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.lblTitle.Location = new System.Drawing.Point(200, 310);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(27, 13);
+            this.lblTitle.Size = new System.Drawing.Size(30, 20);
             this.lblTitle.TabIndex = 14;
-            this.lblTitle.Text = "Title";
+            this.lblTitle.Text = "Title:";
+            this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lblEdition
             // 
-            this.lblEdition.AutoSize = true;
-            this.lblEdition.Location = new System.Drawing.Point(261, 364);
+            this.lblEdition.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.lblEdition.Location = new System.Drawing.Point(200, 350);
             this.lblEdition.Name = "lblEdition";
-            this.lblEdition.Size = new System.Drawing.Size(39, 13);
+            this.lblEdition.Size = new System.Drawing.Size(42, 20);
             this.lblEdition.TabIndex = 15;
-            this.lblEdition.Text = "Edition";
+            this.lblEdition.Text = "Edition:";
+            this.lblEdition.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lblPrice
             // 
-            this.lblPrice.AutoSize = true;
-            this.lblPrice.Location = new System.Drawing.Point(261, 407);
+            this.lblPrice.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.lblPrice.Location = new System.Drawing.Point(200, 390);
             this.lblPrice.Name = "lblPrice";
-            this.lblPrice.Size = new System.Drawing.Size(31, 13);
+            this.lblPrice.Size = new System.Drawing.Size(34, 20);
             this.lblPrice.TabIndex = 16;
-            this.lblPrice.Text = "Price";
+            this.lblPrice.Text = "Price:";
+            this.lblPrice.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // btnUpdate
             // 
-            this.btnUpdate.Location = new System.Drawing.Point(305, 437);
+            this.btnUpdate.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnUpdate.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnUpdate.Location = new System.Drawing.Point(225, 430);
             this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(75, 23);
-            this.btnUpdate.TabIndex = 17;
-            this.btnUpdate.Text = "Update";
+            this.btnUpdate.Size = new System.Drawing.Size(150, 25);
+            this.btnUpdate.TabIndex = 4;
+            this.btnUpdate.Text = "&Update";
             this.btnUpdate.UseVisualStyleBackColor = true;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 

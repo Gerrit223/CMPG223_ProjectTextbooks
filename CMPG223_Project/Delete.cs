@@ -190,14 +190,14 @@ namespace CMPG223_Project
             }
         }
 
-        private void radClient_CheckedChanged(object sender, EventArgs e)
-        {
-            DisplayAll("SELECT * FROM Clients");
-        }
-
         private void Delete_Load(object sender, EventArgs e)
         {
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+        }
+
+        private void radClient_CheckedChanged_1(object sender, EventArgs e)
+        {
+            DisplayAll("SELECT * FROM Clients");
         }
     }
 

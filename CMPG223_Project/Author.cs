@@ -84,17 +84,27 @@ namespace CMPG223_Project
         {
             try
             {
-                conn = new SqlConnection(constr);
-                conn.Open();
-                string sql = "UPDATE Author SET AuthorName = @first, AuthorSurname = @last WHERE AuthorId = '" + id + "'";
-                comm = new SqlCommand(sql, conn);
-                comm.Parameters.AddWithValue("@first", txtFirst.Text);
-                comm.Parameters.AddWithValue("@last", txtLast.Text);
-                comm.ExecuteNonQuery();
-                conn.Close();
+                if (txtFirst.Text == "" || txtLast.Text == "")
+                {
+                    MessageBox.Show("Please enter valid data");
+                }
+                else
+                {
+                    conn = new SqlConnection(constr);
+                    conn.Open();
+                    string sql = "UPDATE Author SET AuthorName = @first, AuthorSurname = @last WHERE AuthorId = '" + id + "'";
+                    comm = new SqlCommand(sql, conn);
+                    comm.Parameters.AddWithValue("@first", txtFirst.Text);
+                    comm.Parameters.AddWithValue("@last", txtLast.Text);
+                    comm.ExecuteNonQuery();
+                    conn.Close();
 
-                MessageBox.Show("Author Details Updated", "Change Details");
-                DisplayAll("Select * From Author");
+                    MessageBox.Show("Author Details Updated", "Change Details");
+                    DisplayAll("Select * From Author");
+
+                    txtFirst.Clear();
+                    txtLast.Clear();
+                }
             }
             catch (SqlException error)
             {
