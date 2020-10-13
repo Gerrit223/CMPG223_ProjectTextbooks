@@ -130,8 +130,9 @@ namespace CMPG223_Project
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+
             listBox1.Items.Clear();
-            string name, surname, cell, title, price,edition;
+            string name, surname, cell, title, price, edition;
             try
             {
                 if (dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
@@ -168,10 +169,10 @@ namespace CMPG223_Project
 
                 }
             }
-            catch(System.ArgumentOutOfRangeException a)
+            catch (System.ArgumentOutOfRangeException a)
             {
                 MessageBox.Show(a.Message);
             }
-        }
+        }   
     }
 }

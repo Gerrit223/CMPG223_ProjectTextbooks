@@ -89,8 +89,6 @@ namespace CMPG223_Project
             {
                 MessageBox.Show(error.Message);
             }
-           
-
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -112,7 +110,6 @@ namespace CMPG223_Project
 
             if (name == "" || surname == "" || email == ""|| password != confirmPassword || cellnr.Length != 10 || digits == false || emailAvailable == false || cellValid == false)
             {
-                MessageBox.Show("There are missing/wrong details!", "Details", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 if (emailAvailable == false)
                 {
                     MessageBox.Show("Email has already been taken!", "Email", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -121,6 +118,11 @@ namespace CMPG223_Project
                 if (cellValid == false)
                 {
                     MessageBox.Show("Cellphone number is already registered!", "Cellphone", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtCellphone.Clear();
+                }
+                if (digits == false || cellnr.Length != 10)
+                {
+                    MessageBox.Show("Cellphone number contains errors!", "Cellphone", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     txtCellphone.Clear();
                 }
                 if (password != confirmPassword)

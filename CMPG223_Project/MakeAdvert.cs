@@ -60,77 +60,108 @@ namespace CMPG223_Project
         {
             string isbn, title, edition, authorname, authorsurname;
             int price;
-
-            isbn = txtISBN.Text;
-            title = txtTitle.Text;
-            edition = txtEdition.Text;
-            price = int.Parse(txtPrice.Text);
-            authorname = txtAuthorName.Text;
-            authorsurname = txtAuthorSurname.Text;
-
-            try
+            if (txtEdition.Text == "" || txtISBN.Text.Length != 17 || txtPrice.Text == "" || txtTitle.Text == "" || int.Parse(txtEdition.Text) < 1 || int.Parse(txtPrice.Text) < 1)
             {
-
-                //INSERT INTO AUTHOR
-                insert = "INSERT INTO Author VALUES(@AuthorName,@AuthorSurname)";
-                conn.Open();
-                cmd = new SqlCommand(insert, conn);
-                cmd.Parameters.AddWithValue("@AuthorName", authorname);
-                cmd.Parameters.AddWithValue("@AuthorSurname", authorsurname);
-                cmd.ExecuteNonQuery();
-                conn.Close();
-                string sqlAuthorId = "SELECT AuthorId FROM Author WHERE AuthorName = '" + authorname + "' AND AuthorSurName = '" + authorsurname + "' ";
-                authorId = getPrimaryKeyValue(sqlAuthorId);
-
-                //INSERT INTO BOOKS
-                insert = "INSERT INTO Books VALUES(@ISBN,@Title,@Edition,@Price)";
-                conn = new SqlConnection(constr);
-                conn.Open();
-                cmd = new SqlCommand(insert, conn);
-                cmd.Parameters.AddWithValue("@ISBN", isbn);
-                cmd.Parameters.AddWithValue("@Title", title);
-                cmd.Parameters.AddWithValue("@Edition", edition);
-                cmd.Parameters.AddWithValue("@Price", price);
-                cmd.ExecuteNonQuery();
-                conn.Close();
-
-                string sqlBookId = "SELECT BookId FROM Books WHERE ISBN = '" + isbn + "' AND Title = '" + title + "' AND Edition = '" + edition + "' AND Price = '" + price + "' ";
-                bookId = getPrimaryKeyValue(sqlBookId);
-
-                //INSERT INTO BOOKADVERTS
-                insert = "INSERT INTO BookAdverts VALUES(@ClientId,@BookId,@DateAdded)";
-                conn = new SqlConnection(constr);
-                conn.Open();
-                cmd = new SqlCommand(insert, conn);
-                cmd.Parameters.AddWithValue("@ClientId", clientId);
-                cmd.Parameters.AddWithValue("@BookId", bookId);
-                cmd.Parameters.AddWithValue("@DateAdded", DateTime.Today.ToShortDateString());
-                cmd.ExecuteNonQuery();
-                conn.Close();
-
-
-                //INSERT INTO BOOKAUTHOR
-                insert = "INSERT INTO BookAuthors VALUES(@BookId,@AuthorId)";
-                conn = new SqlConnection(constr);
-                conn.Open();
-                cmd = new SqlCommand(insert, conn);
-                cmd.Parameters.AddWithValue("@BookId", bookId);
-                cmd.Parameters.AddWithValue("@AuthorId", authorId);
-                cmd.ExecuteNonQuery();
-                conn.Close();
-
-                MessageBox.Show("Advertisement made!", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                txtISBN.Clear();
-                txtTitle.Clear();
-                txtEdition.Clear();
-                txtPrice.Clear();
-                txtAuthorName.Clear();
-                txtAuthorSurname.Clear();
-                txtISBN.Focus();
+                if (txtEdition.Text == "" || int.Parse(txtEdition.Text) < 1)
+                {
+                    MessageBox.Show("Please enter a valid edition number");
+                    txtEdition.Clear();
+                }
+                if (txtISBN.Text.Length != 17)
+                {
+                    MessageBox.Show("Please enter a valid ISBN number that consists of 17 charachters");
+                    txtISBN.Clear();
+                }
+                if (txtPrice.Text == "" || int.Parse(txtPrice.Text) < 1)
+                {
+                    MessageBox.Show("Please enter a valid price > 0");
+                    txtPrice.Clear();
+                }
+                if (txtTitle.Text == "")
+                {
+                    MessageBox.Show("Please enter a valid book title");
+                }
+                if (txtAuthorName.Text == "")
+                {
+                    MessageBox.Show("Please enter a valid book Author");
+                }
+                if (txtAuthorSurname.Text == "")
+                {
+                    MessageBox.Show("Please enter a valid Surname");
+                }
             }
-            catch (SqlException error)
+            else
             {
-                MessageBox.Show(error.Message);
+                try
+                {
+                    isbn = txtISBN.Text;
+                    title = txtTitle.Text;
+                    edition = txtEdition.Text;
+                    price = int.Parse(txtPrice.Text);
+                    authorname = txtAuthorName.Text;
+                    authorsurname = txtAuthorSurname.Text;
+
+                    //INSERT INTO AUTHOR
+                    insert = "INSERT INTO Author VALUES(@AuthorName,@AuthorSurname)";
+                    conn.Open();
+                    cmd = new SqlCommand(insert, conn);
+                    cmd.Parameters.AddWithValue("@AuthorName", authorname);
+                    cmd.Parameters.AddWithValue("@AuthorSurname", authorsurname);
+                    cmd.ExecuteNonQuery();
+                    conn.Close();
+                    string sqlAuthorId = "SELECT AuthorId FROM Author WHERE AuthorName = '" + authorname + "' AND AuthorSurName = '" + authorsurname + "' ";
+                    authorId = getPrimaryKeyValue(sqlAuthorId);
+
+                    //INSERT INTO BOOKS
+                    insert = "INSERT INTO Books VALUES(@ISBN,@Title,@Edition,@Price)";
+                    conn = new SqlConnection(constr);
+                    conn.Open();
+                    cmd = new SqlCommand(insert, conn);
+                    cmd.Parameters.AddWithValue("@ISBN", isbn);
+                    cmd.Parameters.AddWithValue("@Title", title);
+                    cmd.Parameters.AddWithValue("@Edition", edition);
+                    cmd.Parameters.AddWithValue("@Price", price);
+                    cmd.ExecuteNonQuery();
+                    conn.Close();
+
+                    string sqlBookId = "SELECT BookId FROM Books WHERE ISBN = '" + isbn + "' AND Title = '" + title + "' AND Edition = '" + edition + "' AND Price = '" + price + "' ";
+                    bookId = getPrimaryKeyValue(sqlBookId);
+
+                    //INSERT INTO BOOKADVERTS
+                    insert = "INSERT INTO BookAdverts VALUES(@ClientId,@BookId,@DateAdded)";
+                    conn = new SqlConnection(constr);
+                    conn.Open();
+                    cmd = new SqlCommand(insert, conn);
+                    cmd.Parameters.AddWithValue("@ClientId", clientId);
+                    cmd.Parameters.AddWithValue("@BookId", bookId);
+                    cmd.Parameters.AddWithValue("@DateAdded", DateTime.Today.ToShortDateString());
+                    cmd.ExecuteNonQuery();
+                    conn.Close();
+
+
+                    //INSERT INTO BOOKAUTHOR
+                    insert = "INSERT INTO BookAuthors VALUES(@BookId,@AuthorId)";
+                    conn = new SqlConnection(constr);
+                    conn.Open();
+                    cmd = new SqlCommand(insert, conn);
+                    cmd.Parameters.AddWithValue("@BookId", bookId);
+                    cmd.Parameters.AddWithValue("@AuthorId", authorId);
+                    cmd.ExecuteNonQuery();
+                    conn.Close();
+
+                    MessageBox.Show("Advertisement made!", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    txtISBN.Clear();
+                    txtTitle.Clear();
+                    txtEdition.Clear();
+                    txtPrice.Clear();
+                    txtAuthorName.Clear();
+                    txtAuthorSurname.Clear();
+                    txtISBN.Focus();
+                }
+                catch (SqlException error)
+                {
+                    MessageBox.Show(error.Message);
+                }
             }
         }
 
