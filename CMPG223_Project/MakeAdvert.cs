@@ -29,6 +29,35 @@ namespace CMPG223_Project
             InitializeComponent();
 
         }
+        public bool isDigits(string number) //Method om te kyk of cell nr. uit digits bestaan
+        {
+            foreach (char c in number)
+            {
+                if (c < '0' || c > '9')
+                    return false;
+            }
+            return true;
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            this.progressBar1.Increment(10);
+
+            if (progressBar1.Value == 100)
+            {
+                this.timer1.Stop();
+                progressBar1.Value = 0;
+                progressBar1.Visible = false;
+                MessageBox.Show("Advertisement made!", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                txtISBN.Clear();
+                txtTitle.Clear();
+                txtEdition.Clear();
+                txtPrice.Clear();
+                txtAuthorName.Clear();
+                txtAuthorSurname.Clear();
+                txtTitle.Focus();
+            }
+        }
 
         public int getPrimaryKeyValue(string sql)
         {
@@ -48,8 +77,7 @@ namespace CMPG223_Project
                 }
                 catch (SqlException error)
                 {
-                    MessageBox.Show(error.Message);
-               
+                    MessageBox.Show("Please contact page advisor!\n" + error.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return -1;
                 }
                 
@@ -60,34 +88,55 @@ namespace CMPG223_Project
         {
             string isbn, title, edition, authorname, authorsurname;
             int price;
-            if (txtEdition.Text == "" || txtISBN.Text.Length != 17 || txtPrice.Text == "" || txtTitle.Text == "" || int.Parse(txtEdition.Text) < 1 || int.Parse(txtPrice.Text) < 1)
+            if (txtAuthorName.Text == "" || txtAuthorSurname.Text == "" || txtEdition.Text == "" || txtISBN.Text.Length != 17 || txtPrice.Text == "" || txtTitle.Text == "" || isDigits(txtEdition.Text) == false || isDigits(txtPrice.Text) == false)
             {
-                if (txtEdition.Text == "" || int.Parse(txtEdition.Text) < 1)
+                if (txtEdition.Text == "" || isDigits(txtEdition.Text) == false)
                 {
-                    MessageBox.Show("Please enter a valid edition number");
+                    MessageBox.Show("Please enter a valid edition!", "Invalid Edition", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     txtEdition.Clear();
+                    txtEdition.Focus();
                 }
                 if (txtISBN.Text.Length != 17)
                 {
-                    MessageBox.Show("Please enter a valid ISBN number that consists of 17 charachters");
+                    MessageBox.Show("Please enter a valid ISBN that consists of 17 charachters!", "Invalid ISBN", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     txtISBN.Clear();
+                    txtISBN.Focus();
                 }
-                if (txtPrice.Text == "" || int.Parse(txtPrice.Text) < 1)
+                if (txtPrice.Text == "" || isDigits(txtPrice.Text) == false)
                 {
-                    MessageBox.Show("Please enter a valid price > 0");
+                    MessageBox.Show("Please enter a valid price!", "Invalid Price", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     txtPrice.Clear();
+                    txtPrice.Focus();
                 }
                 if (txtTitle.Text == "")
                 {
-                    MessageBox.Show("Please enter a valid book title");
+                    MessageBox.Show("Empty field!", "Title", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtTitle.Focus();
                 }
                 if (txtAuthorName.Text == "")
                 {
-                    MessageBox.Show("Please enter a valid book Author");
+                    MessageBox.Show("Empty field!", "Author Name", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtAuthorName.Focus();
                 }
                 if (txtAuthorSurname.Text == "")
                 {
-                    MessageBox.Show("Please enter a valid Surname");
+                    MessageBox.Show("Empty field!", "Author Surname", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtAuthorSurname.Focus();
+                }
+            }
+            else if (isDigits(txtEdition.Text) == true && int.Parse(txtEdition.Text) < 1 || isDigits(txtPrice.Text) == true && int.Parse(txtPrice.Text) < 1)
+            {
+                if (isDigits(txtEdition.Text) == true && int.Parse(txtEdition.Text) < 1)
+                {
+                    MessageBox.Show("Edition can't be less than 1!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtEdition.Clear();
+                    txtEdition.Focus();
+                }
+                if (isDigits(txtPrice.Text) == true && int.Parse(txtPrice.Text) < 1)
+                {
+                    MessageBox.Show("Price can't be less than R1!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtPrice.Clear();
+                    txtPrice.Focus();
                 }
             }
             else
@@ -149,18 +198,12 @@ namespace CMPG223_Project
                     cmd.ExecuteNonQuery();
                     conn.Close();
 
-                    MessageBox.Show("Advertisement made!", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    txtISBN.Clear();
-                    txtTitle.Clear();
-                    txtEdition.Clear();
-                    txtPrice.Clear();
-                    txtAuthorName.Clear();
-                    txtAuthorSurname.Clear();
-                    txtISBN.Focus();
+                    progressBar1.Visible = true;
+                    this.timer1.Start();
                 }
                 catch (SqlException error)
                 {
-                    MessageBox.Show(error.Message);
+                    MessageBox.Show("Please contact page advisor!\n" + error.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -176,7 +219,7 @@ namespace CMPG223_Project
             }
             catch (SqlException error)
             {
-                MessageBox.Show(error.Message);
+                MessageBox.Show("Please contact page advisor!\n" + error.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

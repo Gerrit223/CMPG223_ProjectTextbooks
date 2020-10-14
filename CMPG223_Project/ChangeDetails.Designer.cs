@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label2 = new System.Windows.Forms.Label();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.txtCell = new System.Windows.Forms.TextBox();
@@ -38,12 +39,14 @@
             this.txtConfirm = new System.Windows.Forms.TextBox();
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.lblName = new System.Windows.Forms.Label();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.SuspendLayout();
             // 
             // label2
             // 
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label2.Location = new System.Drawing.Point(200, 100);
+            this.label2.Location = new System.Drawing.Point(250, 100);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(35, 20);
             this.label2.TabIndex = 1;
@@ -70,7 +73,7 @@
             // 
             this.btnChange.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btnChange.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnChange.Location = new System.Drawing.Point(250, 340);
+            this.btnChange.Location = new System.Drawing.Point(325, 340);
             this.btnChange.Name = "btnChange";
             this.btnChange.Size = new System.Drawing.Size(200, 30);
             this.btnChange.TabIndex = 4;
@@ -81,7 +84,7 @@
             // llblCell
             // 
             this.llblCell.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.llblCell.Location = new System.Drawing.Point(200, 160);
+            this.llblCell.Location = new System.Drawing.Point(250, 160);
             this.llblCell.Name = "llblCell";
             this.llblCell.Size = new System.Drawing.Size(100, 20);
             this.llblCell.TabIndex = 10;
@@ -91,7 +94,7 @@
             // lblPassword
             // 
             this.lblPassword.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.lblPassword.Location = new System.Drawing.Point(200, 220);
+            this.lblPassword.Location = new System.Drawing.Point(250, 220);
             this.lblPassword.Name = "lblPassword";
             this.lblPassword.Size = new System.Drawing.Size(59, 20);
             this.lblPassword.TabIndex = 11;
@@ -101,7 +104,7 @@
             // lblConfirm
             // 
             this.lblConfirm.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.lblConfirm.Location = new System.Drawing.Point(200, 280);
+            this.lblConfirm.Location = new System.Drawing.Point(250, 280);
             this.lblConfirm.Name = "lblConfirm";
             this.lblConfirm.Size = new System.Drawing.Size(94, 20);
             this.lblConfirm.TabIndex = 12;
@@ -134,11 +137,28 @@
             this.lblName.TabIndex = 15;
             this.lblName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // progressBar1
+            // 
+            this.progressBar1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.progressBar1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.progressBar1.ForeColor = System.Drawing.Color.Lime;
+            this.progressBar1.Location = new System.Drawing.Point(0, 427);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(800, 23);
+            this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
+            this.progressBar1.TabIndex = 16;
+            this.progressBar1.Visible = false;
+            // 
             // ChangeDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.lblName);
             this.Controls.Add(this.txtPassword);
             this.Controls.Add(this.txtConfirm);
@@ -168,5 +188,7 @@
         private System.Windows.Forms.TextBox txtConfirm;
         private System.Windows.Forms.TextBox txtPassword;
         private System.Windows.Forms.Label lblName;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.ProgressBar progressBar1;
     }
 }

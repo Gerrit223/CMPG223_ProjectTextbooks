@@ -72,7 +72,7 @@
             this.listBox1.ColumnWidth = 100;
             this.listBox1.Cursor = System.Windows.Forms.Cursors.No;
             this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(300, 20);
+            this.listBox1.Location = new System.Drawing.Point(300, 100);
             this.listBox1.MultiColumn = true;
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(227, 121);
@@ -82,9 +82,9 @@
             // 
             this.panel1.Controls.Add(this.listBox1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 443);
+            this.panel1.Location = new System.Drawing.Point(0, 303);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(800, 160);
+            this.panel1.Size = new System.Drawing.Size(800, 300);
             this.panel1.TabIndex = 6;
             // 
             // panel2
@@ -104,7 +104,8 @@
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.AllowUserToOrderColumns = true;
+            this.dataGridView1.AllowUserToResizeColumns = false;
+            this.dataGridView1.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
@@ -148,7 +149,7 @@
             this.dataGridView1.ShowCellToolTips = false;
             this.dataGridView1.ShowEditingIcon = false;
             this.dataGridView1.ShowRowErrors = false;
-            this.dataGridView1.Size = new System.Drawing.Size(800, 366);
+            this.dataGridView1.Size = new System.Drawing.Size(800, 226);
             this.dataGridView1.TabIndex = 11;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 

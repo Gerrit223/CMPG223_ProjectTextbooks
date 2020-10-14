@@ -73,8 +73,7 @@ namespace CMPG223_Project
                 }
                 catch (SqlException error)
                 {
-                    MessageBox.Show(error.Message);
-
+                    MessageBox.Show("Please contact page advisor!\n" + error.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return "";
                 }
             }
@@ -98,7 +97,7 @@ namespace CMPG223_Project
             }
             catch (SqlException error)
             {
-                MessageBox.Show(error.Message);
+                MessageBox.Show("Please contact page advisor!\n" + error.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -124,7 +123,7 @@ namespace CMPG223_Project
             }
             catch (SqlException error)
             {
-                MessageBox.Show(error.Message);
+                MessageBox.Show("Please contact page advisor!\n" + error.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -171,7 +170,7 @@ namespace CMPG223_Project
             }
             catch (System.ArgumentOutOfRangeException a)
             {
-                MessageBox.Show(a.Message);
+                MessageBox.Show("Please select content inside the table!\n" + a.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }   
     }

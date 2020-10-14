@@ -99,7 +99,7 @@ namespace CMPG223_Project
                 }
                 catch (SqlException error)
                 {
-                    MessageBox.Show(error.Message);
+                    MessageBox.Show("Please contact page advisor!\n" + error.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                     return "";
                 }
@@ -110,67 +110,62 @@ namespace CMPG223_Project
         private void btnChange_Click(object sender, EventArgs e)
         {
             bool digits, emailAvailable, cellValid;
-            bool nEmail = false;
-            bool nCell = false;
 
             digits = isDigits(txtCell.Text);
-            emailAvailable = isemailAvailable(email);
-            cellValid = isCellValid(txtCell.Text);
 
-            if (email == txtEmail.Text || cell == txtCell.Text)
+            if (email == txtEmail.Text)
             {
-                if (email == txtEmail.Text && emailAvailable == false)
-                {
-                    nEmail = true;
-                }
-                if (cell == txtCell.Text && cellValid == false)
-                {
-                    nCell = true;
-                }
-
+                emailAvailable = true;    
+            }
+            else
+            {
+                emailAvailable = isemailAvailable(txtEmail.Text);
+            }
+            if (cell == txtCell.Text)
+            {
+                cellValid = true;
+            }
+            else
+            {
+                cellValid = isCellValid(txtCell.Text);
             }
 
-            if (txtEmail.Text == "" || txtCell.Text.Length != 10 || txtPassword.Text == "" || txtPassword.Text != txtConfirm.Text || digits == false || nEmail == false || nCell == false)
+
+            if (txtEmail.Text == "" || txtCell.Text.Length != 10 || txtPassword.Text == "" || txtPassword.Text != txtConfirm.Text || digits == false || emailAvailable == false || cellValid == false)
             {
-                MessageBox.Show("There are missing / wrong fields");
                 if (txtEmail.Text == "" || txtCell.Text.Length != 10 || txtPassword.Text == "")
                 {
-                    MessageBox.Show("There are missing fields");
-                    if (txtEmail.Text == "")
-                        txtEmail.Clear();
-                    if (txtCell.Text.Length != 10)
-                        txtCell.Clear();
-                    if (txtPassword.Text == "" || txtConfirm.Text == "")
-                    {
-                        txtPassword.Clear();
-                        txtConfirm.Clear();
-                    }
+                    MessageBox.Show("Some fields are missing!", "Invalid fields", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-                else if (txtPassword.Text != txtConfirm.Text)
+                if (txtPassword.Text != txtConfirm.Text)
                 {
-                    MessageBox.Show("Passwords doesn't match");
+                    MessageBox.Show("Password doesn't match!", "Password", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     txtConfirm.Clear();
                     txtPassword.Clear();
+                    txtPassword.Focus();
                 }
-                else if (digits == false)
+                if (digits == false)
                 {
-                    MessageBox.Show("Please enter a valid cell number");
+                    MessageBox.Show("The cellphone number is invalid!", "Invalid Digits", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     txtCell.Clear();
+                    txtCell.Focus();
                 }
-                else if (nEmail == false)
+                if (emailAvailable == false)
                 {
-                    MessageBox.Show("email in use");
+                    MessageBox.Show("Email in use!", "Invalid email", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     txtEmail.Clear();
+                    txtEmail.Focus();
                 }
-                else if (nCell == false)
+                if (cellValid == false)
                 {
-                    MessageBox.Show("Cellphone number in use");
+                    MessageBox.Show("Cellphone number in use!", "Invalid", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     txtCell.Clear();
+                    txtCell.Focus();
                 }
             }
             else
             {
-                DialogResult dialogResult = MessageBox.Show("Are you sure you want to change your details?", "Change Details", MessageBoxButtons.YesNo);
+                DialogResult dialogResult = MessageBox.Show("Are you sure you want to change your details?", "Change Details", MessageBoxButtons.YesNo,MessageBoxIcon.Question);
                 if (dialogResult == DialogResult.Yes)
                 {
                     try
@@ -184,25 +179,41 @@ namespace CMPG223_Project
                         comm.Parameters.AddWithValue("@cell", txtCell.Text);
                         comm.Parameters.AddWithValue("@password", txtConfirm.Text);
 
+                        
                         comm.ExecuteNonQuery();
                         conn.Close();
-                        MessageBox.Show("Client Details Updated");
-                        txtCell.Clear();
-                        txtConfirm.Clear();
-                        txtEmail.Clear();
-                        txtPassword.Clear();
-
+                        progressBar1.Visible = true;
+                        this.timer1.Start();
                     }
                     catch (SqlException error)
                     {
-                        MessageBox.Show(error.Message);
+                        MessageBox.Show("Please contact page advisor!\n" + error.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
                 else if (dialogResult == DialogResult.No)
                 {
-                    MessageBox.Show("Client details have not been changed");
+                    MessageBox.Show("Details not changed!", "Update", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
             }
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            this.progressBar1.Increment(10);
+
+            if (progressBar1.Value == 100)
+            {
+                this.timer1.Stop();
+                progressBar1.Value = 0;
+                progressBar1.Visible = false;
+                MessageBox.Show("Client details updated successfully!", "Update", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                txtCell.Clear();
+                txtConfirm.Clear();
+                txtEmail.Clear();
+                txtPassword.Clear();
+                txtEmail.Focus();
+            }
+
         }
 
         private void ChangeDetails_Load(object sender, EventArgs e)

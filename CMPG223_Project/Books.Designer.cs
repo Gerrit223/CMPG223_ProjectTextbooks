@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -43,6 +44,8 @@
             this.lblEdition = new System.Windows.Forms.Label();
             this.lblPrice = new System.Windows.Forms.Label();
             this.btnUpdate = new System.Windows.Forms.Button();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -50,7 +53,8 @@
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.AllowUserToOrderColumns = true;
+            this.dataGridView1.AllowUserToResizeColumns = false;
+            this.dataGridView1.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
@@ -101,7 +105,7 @@
             // txtISBN
             // 
             this.txtISBN.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.txtISBN.Location = new System.Drawing.Point(250, 270);
+            this.txtISBN.Location = new System.Drawing.Point(300, 300);
             this.txtISBN.Name = "txtISBN";
             this.txtISBN.Size = new System.Drawing.Size(150, 20);
             this.txtISBN.TabIndex = 0;
@@ -109,7 +113,7 @@
             // txtPrice
             // 
             this.txtPrice.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.txtPrice.Location = new System.Drawing.Point(250, 390);
+            this.txtPrice.Location = new System.Drawing.Point(300, 510);
             this.txtPrice.Name = "txtPrice";
             this.txtPrice.Size = new System.Drawing.Size(150, 20);
             this.txtPrice.TabIndex = 3;
@@ -117,7 +121,7 @@
             // txtEdition
             // 
             this.txtEdition.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.txtEdition.Location = new System.Drawing.Point(250, 350);
+            this.txtEdition.Location = new System.Drawing.Point(300, 440);
             this.txtEdition.Name = "txtEdition";
             this.txtEdition.Size = new System.Drawing.Size(150, 20);
             this.txtEdition.TabIndex = 2;
@@ -125,7 +129,7 @@
             // txtTitle
             // 
             this.txtTitle.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.txtTitle.Location = new System.Drawing.Point(250, 310);
+            this.txtTitle.Location = new System.Drawing.Point(300, 370);
             this.txtTitle.Name = "txtTitle";
             this.txtTitle.Size = new System.Drawing.Size(150, 20);
             this.txtTitle.TabIndex = 1;
@@ -133,7 +137,7 @@
             // lblISBN
             // 
             this.lblISBN.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.lblISBN.Location = new System.Drawing.Point(200, 270);
+            this.lblISBN.Location = new System.Drawing.Point(250, 300);
             this.lblISBN.Name = "lblISBN";
             this.lblISBN.Size = new System.Drawing.Size(35, 20);
             this.lblISBN.TabIndex = 13;
@@ -143,7 +147,7 @@
             // lblTitle
             // 
             this.lblTitle.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.lblTitle.Location = new System.Drawing.Point(200, 310);
+            this.lblTitle.Location = new System.Drawing.Point(250, 370);
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(30, 20);
             this.lblTitle.TabIndex = 14;
@@ -153,7 +157,7 @@
             // lblEdition
             // 
             this.lblEdition.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.lblEdition.Location = new System.Drawing.Point(200, 350);
+            this.lblEdition.Location = new System.Drawing.Point(250, 440);
             this.lblEdition.Name = "lblEdition";
             this.lblEdition.Size = new System.Drawing.Size(42, 20);
             this.lblEdition.TabIndex = 15;
@@ -163,7 +167,7 @@
             // lblPrice
             // 
             this.lblPrice.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.lblPrice.Location = new System.Drawing.Point(200, 390);
+            this.lblPrice.Location = new System.Drawing.Point(250, 510);
             this.lblPrice.Name = "lblPrice";
             this.lblPrice.Size = new System.Drawing.Size(34, 20);
             this.lblPrice.TabIndex = 16;
@@ -173,20 +177,40 @@
             // btnUpdate
             // 
             this.btnUpdate.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnUpdate.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnUpdate.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnUpdate.Location = new System.Drawing.Point(225, 430);
+            this.btnUpdate.Location = new System.Drawing.Point(275, 580);
             this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(150, 25);
+            this.btnUpdate.Size = new System.Drawing.Size(200, 30);
             this.btnUpdate.TabIndex = 4;
             this.btnUpdate.Text = "&Update";
             this.btnUpdate.UseVisualStyleBackColor = true;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // progressBar1
+            // 
+            this.progressBar1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.progressBar1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.progressBar1.ForeColor = System.Drawing.Color.Lime;
+            this.progressBar1.Location = new System.Drawing.Point(0, 646);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(800, 23);
+            this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
+            this.progressBar1.TabIndex = 17;
+            this.progressBar1.Visible = false;
+            // 
             // Books
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 472);
+            this.AutoSize = true;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.ClientSize = new System.Drawing.Size(800, 669);
+            this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.lblPrice);
             this.Controls.Add(this.lblEdition);
@@ -218,5 +242,7 @@
         private System.Windows.Forms.Label lblEdition;
         private System.Windows.Forms.Label lblPrice;
         private System.Windows.Forms.Button btnUpdate;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.ProgressBar progressBar1;
     }
 }

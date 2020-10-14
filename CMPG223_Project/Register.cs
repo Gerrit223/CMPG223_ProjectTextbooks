@@ -87,7 +87,7 @@ namespace CMPG223_Project
             }
             catch(SqlException error)
             {
-                MessageBox.Show(error.Message);
+                MessageBox.Show("Please contact page advisor!\n" + error.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -112,24 +112,28 @@ namespace CMPG223_Project
             {
                 if (emailAvailable == false)
                 {
-                    MessageBox.Show("Email has already been taken!", "Email", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Email in use!", "Email", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     txtEmail.Clear();
+                    txtEmail.Focus();
                 }
                 if (cellValid == false)
                 {
-                    MessageBox.Show("Cellphone number is already registered!", "Cellphone", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Cellphone number in use!", "Cellphone", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     txtCellphone.Clear();
+                    txtCellphone.Focus();
                 }
                 if (digits == false || cellnr.Length != 10)
                 {
                     MessageBox.Show("Cellphone number contains errors!", "Cellphone", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     txtCellphone.Clear();
+                    txtCellphone.Focus();
                 }
                 if (password != confirmPassword)
                 {
                     MessageBox.Show("Passwords DO NOT match!", "Password", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     txtConfirm.Clear();
                     txtPassword.Clear();
+                    txtPassword.Focus();
                 }
                 if (name == "" || surname == "" || email == "" || password == "")
                 {
@@ -154,7 +158,7 @@ namespace CMPG223_Project
                 }
                 catch (SqlException error)
                 {
-                    MessageBox.Show(error.Message);
+                    MessageBox.Show("Please contact page advisor!\n" + error.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }          
         }
@@ -166,6 +170,8 @@ namespace CMPG223_Project
             if(progressBar1.Value == 100)
             {
                 this.timer1.Stop();
+                progressBar1.Value = 0;
+                progressBar1.Visible = false;
                 MessageBox.Show("NEW USER ADDED","Users",MessageBoxButtons.OK,MessageBoxIcon.Information);
 
                 string sqlStatement = "SELECT ClientId FROM Clients WHERE email = '" + email + "' AND password = '" + confirmPassword + "' ";
@@ -181,15 +187,12 @@ namespace CMPG223_Project
                         Menu menu = new Menu(ClientIdValue, constr);
                         menu.ShowDialog();
                         this.Close();
-
                     }
                     catch (SqlException error)
                     {
-                        MessageBox.Show(error.Message);
+                        MessageBox.Show("Please contact page advisor!\n" + error.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
-                progressBar1.Value = 0;
-                progressBar1.Visible = false;
             }
         }
     }

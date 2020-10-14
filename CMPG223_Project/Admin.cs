@@ -44,7 +44,7 @@ namespace CMPG223_Project
         private void logoutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Login l1 = new Login();
-            DialogResult logout = MessageBox.Show("Are you sure you want to log out?", "Logout", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+            DialogResult logout = MessageBox.Show("Are you sure you want to log out?", "Logout", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (logout == DialogResult.Yes)
             {
                 l1.ShowDialog();

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -42,12 +43,14 @@
             this.txtAuthorName = new System.Windows.Forms.TextBox();
             this.txtAuthorSurname = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label1.Location = new System.Drawing.Point(100, 100);
+            this.label1.Location = new System.Drawing.Point(150, 150);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(30, 20);
             this.label1.TabIndex = 0;
@@ -57,7 +60,7 @@
             // label2
             // 
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label2.Location = new System.Drawing.Point(100, 140);
+            this.label2.Location = new System.Drawing.Point(150, 220);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(45, 20);
             this.label2.TabIndex = 1;
@@ -67,7 +70,7 @@
             // label3
             // 
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label3.Location = new System.Drawing.Point(100, 180);
+            this.label3.Location = new System.Drawing.Point(150, 290);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(35, 20);
             this.label3.TabIndex = 2;
@@ -77,7 +80,7 @@
             // label4
             // 
             this.label4.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label4.Location = new System.Drawing.Point(100, 220);
+            this.label4.Location = new System.Drawing.Point(150, 360);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(40, 20);
             this.label4.TabIndex = 3;
@@ -87,7 +90,7 @@
             // txtTitle
             // 
             this.txtTitle.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.txtTitle.Location = new System.Drawing.Point(150, 100);
+            this.txtTitle.Location = new System.Drawing.Point(200, 150);
             this.txtTitle.Name = "txtTitle";
             this.txtTitle.Size = new System.Drawing.Size(150, 20);
             this.txtTitle.TabIndex = 0;
@@ -95,7 +98,7 @@
             // txtEdition
             // 
             this.txtEdition.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.txtEdition.Location = new System.Drawing.Point(150, 140);
+            this.txtEdition.Location = new System.Drawing.Point(200, 220);
             this.txtEdition.Name = "txtEdition";
             this.txtEdition.Size = new System.Drawing.Size(150, 20);
             this.txtEdition.TabIndex = 1;
@@ -103,7 +106,7 @@
             // txtISBN
             // 
             this.txtISBN.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.txtISBN.Location = new System.Drawing.Point(150, 220);
+            this.txtISBN.Location = new System.Drawing.Point(200, 360);
             this.txtISBN.Name = "txtISBN";
             this.txtISBN.Size = new System.Drawing.Size(150, 20);
             this.txtISBN.TabIndex = 3;
@@ -111,17 +114,18 @@
             // txtPrice
             // 
             this.txtPrice.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.txtPrice.Location = new System.Drawing.Point(150, 180);
+            this.txtPrice.Location = new System.Drawing.Point(200, 290);
             this.txtPrice.Name = "txtPrice";
             this.txtPrice.Size = new System.Drawing.Size(150, 20);
             this.txtPrice.TabIndex = 2;
             // 
             // button1
             // 
+            this.button1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button1.Location = new System.Drawing.Point(200, 300);
+            this.button1.Location = new System.Drawing.Point(275, 430);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(300, 50);
+            this.button1.Size = new System.Drawing.Size(250, 50);
             this.button1.TabIndex = 6;
             this.button1.Text = "Post &Advert";
             this.button1.UseVisualStyleBackColor = true;
@@ -130,7 +134,7 @@
             // label5
             // 
             this.label5.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label5.Location = new System.Drawing.Point(350, 140);
+            this.label5.Location = new System.Drawing.Point(400, 220);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(72, 20);
             this.label5.TabIndex = 9;
@@ -140,7 +144,7 @@
             // label6
             // 
             this.label6.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label6.Location = new System.Drawing.Point(350, 180);
+            this.label6.Location = new System.Drawing.Point(400, 290);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(86, 20);
             this.label6.TabIndex = 10;
@@ -150,7 +154,7 @@
             // txtAuthorName
             // 
             this.txtAuthorName.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.txtAuthorName.Location = new System.Drawing.Point(450, 140);
+            this.txtAuthorName.Location = new System.Drawing.Point(500, 220);
             this.txtAuthorName.Name = "txtAuthorName";
             this.txtAuthorName.Size = new System.Drawing.Size(150, 20);
             this.txtAuthorName.TabIndex = 4;
@@ -158,7 +162,7 @@
             // txtAuthorSurname
             // 
             this.txtAuthorSurname.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.txtAuthorSurname.Location = new System.Drawing.Point(450, 180);
+            this.txtAuthorSurname.Location = new System.Drawing.Point(500, 290);
             this.txtAuthorSurname.Name = "txtAuthorSurname";
             this.txtAuthorSurname.Size = new System.Drawing.Size(150, 20);
             this.txtAuthorSurname.TabIndex = 5;
@@ -169,16 +173,33 @@
             this.label7.Dock = System.Windows.Forms.DockStyle.Top;
             this.label7.Location = new System.Drawing.Point(0, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(800, 30);
+            this.label7.Size = new System.Drawing.Size(800, 50);
             this.label7.TabIndex = 13;
             this.label7.Text = "Make an advert";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // progressBar1
+            // 
+            this.progressBar1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.progressBar1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.progressBar1.ForeColor = System.Drawing.Color.Lime;
+            this.progressBar1.Location = new System.Drawing.Point(0, 583);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(800, 23);
+            this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
+            this.progressBar1.TabIndex = 15;
+            this.progressBar1.Visible = false;
             // 
             // MakeAdvert
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(800, 606);
+            this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.txtAuthorSurname);
             this.Controls.Add(this.txtAuthorName);
@@ -217,5 +238,7 @@
         private System.Windows.Forms.TextBox txtAuthorName;
         private System.Windows.Forms.TextBox txtAuthorSurname;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.ProgressBar progressBar1;
     }
 }

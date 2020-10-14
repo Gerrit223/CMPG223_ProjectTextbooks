@@ -79,7 +79,7 @@ namespace CMPG223_Project
                             }
                             catch(SqlException error)
                             {
-                                MessageBox.Show(error.Message);
+                                MessageBox.Show("Please contact page advisor!\n" + error.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
                         }                      
                     }
@@ -88,13 +88,14 @@ namespace CMPG223_Project
                         MessageBox.Show("Username/Password incorrect","Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
                         txtEmail.Clear();
                         txtPassowrd.Clear();
+                        txtEmail.Focus();
                     }
                     conn.Close();
 
                 }
                 catch(SqlException error)
                 {
-                    MessageBox.Show(error.Message);
+                    MessageBox.Show("Please contact page advisor!\n" + error.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }   
             }         
            

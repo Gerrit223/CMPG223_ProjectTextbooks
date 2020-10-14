@@ -68,8 +68,7 @@ namespace CMPG223_Project
                 }
                 catch (SqlException error)
                 {
-                    MessageBox.Show(error.Message);
-
+                    MessageBox.Show("Please contact page advisor!\n" + error.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return -1;
                 }
 
@@ -90,7 +89,7 @@ namespace CMPG223_Project
             }
             catch (SqlException error)
             {
-                MessageBox.Show(error.Message);
+                MessageBox.Show("Please contact page advisor!\n" + error.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -113,7 +112,7 @@ namespace CMPG223_Project
             }
             catch (SqlException error)
             {
-                MessageBox.Show(error.Message);
+                MessageBox.Show("Please contact page advisor!\n" + error.Message , "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
         }
@@ -123,12 +122,22 @@ namespace CMPG223_Project
             DisplayAll("SELECT * FROM Books");
         }
 
-        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void Delete_Load(object sender, EventArgs e)
         {
-            int id2,loop;
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+        }
+
+        private void radClient_CheckedChanged_1(object sender, EventArgs e)
+        {
+            DisplayAll("SELECT * FROM Clients");
+        }
+
+        private void dataGridView1_CellClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+            int id2, loop;
             if (radBook.Checked)
             {
-                DialogResult delete = MessageBox.Show("Are you sure you want to delete this Book?", "Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                DialogResult delete = MessageBox.Show("Are you sure you want to delete this Book?", "Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (delete == DialogResult.Yes)
                 {
                     // Validates if the user selected a  valid RowIndex
@@ -141,20 +150,21 @@ namespace CMPG223_Project
                             DeleteEntry("Delete FROM BookAuthors WHERE BookId = '" + id + "'");
                             DeleteEntry("Delete FROM BookAdverts WHERE BookId = '" + id + "'");
                             DeleteEntry("Delete FROM Books WHERE BookId = '" + id + "'");
-                            MessageBox.Show("Book has been deleted", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                            MessageBox.Show("Book has been deleted", "Delete", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             DisplayAll("SELECT * FROM Books");
                         }
                     }
                     catch (System.ArgumentOutOfRangeException a)
                     {
-                        MessageBox.Show(a.Message);
+                        MessageBox.Show("Please select content inside the table!\n" + a.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }
-            
+
             if (radClient.Checked)
             {
-                DialogResult delete = MessageBox.Show("Are you sure you want to delete this Client?", "Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                DialogResult delete = MessageBox.Show("Are you sure you want to delete this Client?", "Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (delete == DialogResult.Yes)
                 {
                     // Validates if the user selected a  valid RowIndex
@@ -165,39 +175,43 @@ namespace CMPG223_Project
                             dataGridView1.CurrentRow.Selected = true;
                             id = int.Parse(dataGridView1.Rows[e.RowIndex].Cells["ClientId"].FormattedValue.ToString());
 
-                                loop = getAmount("SELECT * FROM BookAdverts WHERE ClientId = '" + id + "'");
-                                if (loop > 0)
+                            loop = getAmount("SELECT * FROM BookAdverts WHERE ClientId = '" + id + "'");
+                            if (loop > 0)
+                            {
+                                for (int i = 0; i < loop; i++)
                                 {
-                                    for (int i = 0; i < loop; i++)
-                                    {
-                                        id2 = getPrimaryKeyValue("SELECT BookId from BookAdverts WHERE ClientId = '" + id + "'");
-                                        DeleteEntry("Delete FROM BookAuthors WHERE BookId = '" + id2 + "'");
-                                        DeleteEntry("Delete FROM BookAdverts WHERE BookId = '" + id2 + "'");
-                                        DeleteEntry("Delete FROM Books WHERE BookId = '" + id2 + "'");
-                                    }
+                                    id2 = getPrimaryKeyValue("SELECT BookId from BookAdverts WHERE ClientId = '" + id + "'");
+                                    DeleteEntry("Delete FROM BookAuthors WHERE BookId = '" + id2 + "'");
+                                    DeleteEntry("Delete FROM BookAdverts WHERE BookId = '" + id2 + "'");
+                                    DeleteEntry("Delete FROM Books WHERE BookId = '" + id2 + "'");
                                 }
+                            }
 
                             DeleteEntry("Delete FROM Clients WHERE ClientId = '" + id + "'");
-                            MessageBox.Show("Client has been deleted", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            DisplayAll("SELECT * FROM Clients");
+                            progressBar1.Visible = true;
+                            this.timer1.Start();
                         }
                     }
                     catch (System.ArgumentOutOfRangeException a)
                     {
-                        MessageBox.Show(a.Message);
+                        MessageBox.Show("Please select content inside the table!\n" + a.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }
         }
 
-        private void Delete_Load(object sender, EventArgs e)
+        private void timer1_Tick(object sender, EventArgs e)
         {
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-        }
+            this.progressBar1.Increment(10);
 
-        private void radClient_CheckedChanged_1(object sender, EventArgs e)
-        {
-            DisplayAll("SELECT * FROM Clients");
+            if (progressBar1.Value == 100)
+            {
+                this.timer1.Stop();
+                progressBar1.Value = 0;
+                progressBar1.Visible = false;
+                MessageBox.Show("Client has been deleted", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                DisplayAll("SELECT * FROM Clients");
+            }
         }
     }
 

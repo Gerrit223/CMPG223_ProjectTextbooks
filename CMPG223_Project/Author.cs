@@ -48,7 +48,7 @@ namespace CMPG223_Project
                 }
                 catch (SqlException error)
                 {
-                    MessageBox.Show(error.Message);
+                    MessageBox.Show("Please contact page advisor! \n" + error.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                     return "";
                 }
@@ -86,7 +86,7 @@ namespace CMPG223_Project
             {
                 if (txtFirst.Text == "" || txtLast.Text == "")
                 {
-                    MessageBox.Show("Please enter valid data");
+                    MessageBox.Show("Please fill all the missing fields!", "Field Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
                 {
@@ -99,16 +99,13 @@ namespace CMPG223_Project
                     comm.ExecuteNonQuery();
                     conn.Close();
 
-                    MessageBox.Show("Author Details Updated", "Change Details");
-                    DisplayAll("Select * From Author");
-
-                    txtFirst.Clear();
-                    txtLast.Clear();
+                    progressBar1.Visible = true;
+                    this.timer1.Start();
                 }
             }
             catch (SqlException error)
             {
-                MessageBox.Show(error.Message);
+                MessageBox.Show("Please contact page advisor!\n" + error.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -136,9 +133,26 @@ namespace CMPG223_Project
             }
             catch (System.ArgumentOutOfRangeException a)
             {
-                MessageBox.Show(a.Message);
+                MessageBox.Show("Please select content inside the table!\n" + a.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            this.progressBar1.Increment(10);
+
+            if (progressBar1.Value == 100)
+            {
+                this.timer1.Stop();
+                progressBar1.Value = 0;
+                progressBar1.Visible = false;
+                MessageBox.Show("Author details updated!", "Update", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                DisplayAll("Select * From Author");
+                txtFirst.Clear();
+                txtLast.Clear();
+                txtFirst.Focus();
+            }
         }
     }
 }

@@ -7,11 +7,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace CMPG223_Project
 {
     public partial class Menu : Form
     {
+        public SqlConnection conn;
+        public SqlDataAdapter adap;
+        public DataSet ds;
+        public SqlCommand comm;
+        public SqlDataReader datread;
+        public DataTable dt;
         public string constr;
         public int Client;
         public Menu(int ClientIdValue, string myString)
@@ -36,7 +43,7 @@ namespace CMPG223_Project
         private void logoutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Login l1 = new Login();
-            DialogResult logout = MessageBox.Show("Are you sure you want to log out?", "Logout", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+            DialogResult logout = MessageBox.Show("Are you sure you want to log out?", "Logout", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if(logout == DialogResult.Yes)
             {
                 l1.ShowDialog();
@@ -55,6 +62,29 @@ namespace CMPG223_Project
         {
             YourAdvert ya = new YourAdvert(Client,constr);
             ya.MdiParent = this;
+
+            // Counts the amount of records
+            int count = 0;
+            conn = new SqlConnection(constr);
+            conn.Open();
+            comm = new SqlCommand("SELECT * FROM BookAdverts WHERE ClientId = '" + Client + "'", conn);
+            datread = comm.ExecuteReader();
+
+            while (datread.Read())
+            {
+                count++;
+            }
+            conn.Close();
+
+            if (count > 0)
+            {
+                MessageBox.Show("AVAILABLE LISTINGS: " + count, "lISTINGS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("NO LISTINGS MADE!", "LISTINGS", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
             ya.Show();
         }
 

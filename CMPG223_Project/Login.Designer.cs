@@ -40,7 +40,7 @@
             // label1
             // 
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label1.Location = new System.Drawing.Point(200, 100);
+            this.label1.Location = new System.Drawing.Point(300, 250);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(35, 20);
             this.label1.TabIndex = 0;
@@ -50,7 +50,7 @@
             // label2
             // 
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label2.Location = new System.Drawing.Point(200, 150);
+            this.label2.Location = new System.Drawing.Point(300, 300);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(60, 20);
             this.label2.TabIndex = 1;
@@ -60,7 +60,7 @@
             // txtEmail
             // 
             this.txtEmail.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.txtEmail.Location = new System.Drawing.Point(300, 100);
+            this.txtEmail.Location = new System.Drawing.Point(400, 250);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(150, 20);
             this.txtEmail.TabIndex = 0;
@@ -68,7 +68,7 @@
             // txtPassowrd
             // 
             this.txtPassowrd.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.txtPassowrd.Location = new System.Drawing.Point(300, 150);
+            this.txtPassowrd.Location = new System.Drawing.Point(400, 300);
             this.txtPassowrd.Name = "txtPassowrd";
             this.txtPassowrd.PasswordChar = '*';
             this.txtPassowrd.Size = new System.Drawing.Size(150, 20);
@@ -79,7 +79,7 @@
             this.linkLabel1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.linkLabel1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.linkLabel1.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
-            this.linkLabel1.Location = new System.Drawing.Point(500, 100);
+            this.linkLabel1.Location = new System.Drawing.Point(600, 250);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(50, 70);
             this.linkLabel1.TabIndex = 2;
@@ -92,7 +92,7 @@
             // 
             this.button1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button1.Location = new System.Drawing.Point(225, 200);
+            this.button1.Location = new System.Drawing.Point(375, 350);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(200, 35);
             this.button1.TabIndex = 3;

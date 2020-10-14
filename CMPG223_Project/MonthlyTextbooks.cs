@@ -39,81 +39,88 @@ namespace CMPG223_Project
             
 
            int choice = comboBox1.SelectedIndex;
-           switch(choice)
+            if (choice == -1)
             {
-                case 0:
-                    date = 1;
-                    lblHeading.Text = "Report for Adverts made in January";
-                    break;
-                case 1:
-                    date = 2;
-                    lblHeading.Text = "Report for Adverts made in February";
-                    break;
-                case 2:
-                    date = 3;
-                    lblHeading.Text = "Report for Adverts made in March";
-                    break;
-                case 3:
-                    date = 4;
-                    lblHeading.Text = "Report for Adverts made in April";
-                    break;
-                case 4:
-                    date = 5;
-                    lblHeading.Text = "Report for Adverts made in May";
-                    break;
-                case 5:
-                    date = 6;
-                    lblHeading.Text = "Report for Adverts made in June";
-                    break;
-                case 6:
-                    date = 7;
-                    lblHeading.Text = "Report for Adverts made in July";
-                    break;
-                case 7:
-                    date = 8;
-                    lblHeading.Text = "Report for Adverts made in August";
-                    break;
-                case 8:
-                    date = 9;
-                    lblHeading.Text = "Report for Adverts made in September";
-                    break;
-                case 9:
-                    date = 10;
-                    lblHeading.Text = "Report for Adverts made in October";
-                    break;
-                case 10:
-                    date = 11;
-                    lblHeading.Text = "Report for Adverts made in November";
-                    break;
-                case 11:
-                    date = 12;
-                    lblHeading.Text = "Report for Adverts made in December";
-                    break;
-                default:
-                    break;
+                MessageBox.Show("Choose a month!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-
-            try
+            else
             {
-                conn = new SqlConnection(constr);
-                conn.Open();
-                comm = new SqlCommand("SELECT c.Name, c.Surname, b.Title, ba.DateAdded From Books as b, BookAdverts as ba, Clients as c Where c.ClientId = ba.ClientId AND b.BookId = ba.BookId AND MONTH(ba.DateAdded) = '" + date + "' ", conn);
-                comm.Connection = conn;
-                ds = new DataSet();
-                SqlDataAdapter ads = new SqlDataAdapter("SELECT c.Name, c.Surname, b.Title, ba.DateAdded From Books as b, BookAdverts as ba, Clients as c Where c.ClientId = ba.ClientId AND b.BookId = ba.BookId AND MONTH(ba.DateAdded) = '" + date + "' ", conn);
-                ads.SelectCommand = comm;
-                ads.Fill(ds, "Report");
-                dataGridView1.DataSource = ds;
-                dataGridView1.DataMember = "Report";
-                conn.Close();
-                total = dataGridView1.RowCount;
-                lblTotal.Text = "Total Adverts: " + total;
-                lblDate.Text = "Report requested on: " + DateTime.Now.ToString("f");
+                switch (choice)
+                {
+                    case 0:
+                        date = 1;
+                        lblHeading.Text = "Report for Adverts made in January";
+                        break;
+                    case 1:
+                        date = 2;
+                        lblHeading.Text = "Report for Adverts made in February";
+                        break;
+                    case 2:
+                        date = 3;
+                        lblHeading.Text = "Report for Adverts made in March";
+                        break;
+                    case 3:
+                        date = 4;
+                        lblHeading.Text = "Report for Adverts made in April";
+                        break;
+                    case 4:
+                        date = 5;
+                        lblHeading.Text = "Report for Adverts made in May";
+                        break;
+                    case 5:
+                        date = 6;
+                        lblHeading.Text = "Report for Adverts made in June";
+                        break;
+                    case 6:
+                        date = 7;
+                        lblHeading.Text = "Report for Adverts made in July";
+                        break;
+                    case 7:
+                        date = 8;
+                        lblHeading.Text = "Report for Adverts made in August";
+                        break;
+                    case 8:
+                        date = 9;
+                        lblHeading.Text = "Report for Adverts made in September";
+                        break;
+                    case 9:
+                        date = 10;
+                        lblHeading.Text = "Report for Adverts made in October";
+                        break;
+                    case 10:
+                        date = 11;
+                        lblHeading.Text = "Report for Adverts made in November";
+                        break;
+                    case 11:
+                        date = 12;
+                        lblHeading.Text = "Report for Adverts made in December";
+                        break;
+                    default:
+                        break;
+                }
 
-            }
-            catch (SqlException error)
-            {
-                MessageBox.Show(error.Message);
+                try
+                {
+                    conn = new SqlConnection(constr);
+                    conn.Open();
+                    comm = new SqlCommand("SELECT c.Name, c.Surname, b.Title, ba.DateAdded From Books as b, BookAdverts as ba, Clients as c Where c.ClientId = ba.ClientId AND b.BookId = ba.BookId AND MONTH(ba.DateAdded) = '" + date + "' ", conn);
+                    comm.Connection = conn;
+                    ds = new DataSet();
+                    SqlDataAdapter ads = new SqlDataAdapter("SELECT c.Name, c.Surname, b.Title, ba.DateAdded From Books as b, BookAdverts as ba, Clients as c Where c.ClientId = ba.ClientId AND b.BookId = ba.BookId AND MONTH(ba.DateAdded) = '" + date + "' ", conn);
+                    ads.SelectCommand = comm;
+                    ads.Fill(ds, "Report");
+                    dataGridView1.DataSource = ds;
+                    dataGridView1.DataMember = "Report";
+                    conn.Close();
+                    total = dataGridView1.RowCount;
+                    lblTotal.Text = "Total Adverts: " + total;
+                    lblDate.Text = "Report requested on: " + DateTime.Now.ToString("f");
+
+                }
+                catch (SqlException error)
+                {
+                    MessageBox.Show("Please contact page advisor!\n" + error.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
     }

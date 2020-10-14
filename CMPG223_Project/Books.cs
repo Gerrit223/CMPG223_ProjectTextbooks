@@ -34,6 +34,16 @@ namespace CMPG223_Project
             InitializeComponent();
         }
 
+        public bool isDigits(string number) //Method om te kyk of cell nr. uit digits bestaan
+        {
+            foreach (char c in number)
+            {
+                if (c < '0' || c > '9')
+                    return false;
+            }
+            return true;
+        }
+
         public string getStringValue(string sql)
         {
             string sqlStatement = sql;
@@ -52,7 +62,7 @@ namespace CMPG223_Project
                 }
                 catch (SqlException error)
                 {
-                    MessageBox.Show(error.Message);
+                    MessageBox.Show("Please contact page advisor!\n" + error.Message , "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                     return "";
                 }
@@ -79,7 +89,7 @@ namespace CMPG223_Project
             }
             catch (SqlException error)
             {
-                MessageBox.Show(error.Message);
+                MessageBox.Show("Please contact page advisor!\n" + error.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
         }
@@ -93,31 +103,50 @@ namespace CMPG223_Project
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            try
+            if (txtEdition.Text == "" || txtISBN.Text.Length != 17 || txtPrice.Text == "" || txtTitle.Text == "" || isDigits(txtEdition.Text) == false || isDigits(txtPrice.Text) == false)
             {
-                if (txtEdition.Text == ""  || txtISBN.Text.Length != 17  || txtPrice.Text == "" ||  txtTitle.Text == "" || int.Parse(txtEdition.Text) < 1 || int.Parse(txtPrice.Text) < 1)
-                { 
-                    if (txtEdition.Text == "" || int.Parse(txtEdition.Text) < 1 )
-                    {
-                        MessageBox.Show("Please enter a valid edition number");
-                        txtEdition.Clear();
-                    }
-                    if (txtISBN.Text.Length != 17)
-                    {
-                        MessageBox.Show("Please enter a valid ISBN number that consists of 17 digits");
-                        txtISBN.Clear();
-                    }
-                    if (txtPrice.Text == "" || int.Parse(txtPrice.Text) < 1)
-                    {
-                        MessageBox.Show("Please enter a valid price > 0");
-                        txtPrice.Clear();
-                    }
-                    if (txtTitle.Text == "")
-                    {
-                        MessageBox.Show("Please enter a valid book title");
-                    }
+                if (txtEdition.Text == "" || isDigits(txtEdition.Text) == false)
+                {
+                    MessageBox.Show("Please enter a valid edition number!", "Invalid Edition", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtEdition.Clear();
+                    txtEdition.Focus();
                 }
-                else
+                if (txtISBN.Text.Length != 17)
+                {
+                    MessageBox.Show("Please enter a valid ISBN number that consists of 17 digits!", "Invalid ISBN", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtISBN.Clear();
+                    txtISBN.Focus();
+                }
+                if (txtPrice.Text == "" || isDigits(txtPrice.Text) == false)
+                {
+                    MessageBox.Show("Please enter a valid price!", "Invalid Price", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtPrice.Clear();
+                    txtPrice.Focus();
+                }
+                if (txtTitle.Text == "")
+                {
+                    MessageBox.Show("Please enter a valid book title!", "Invalid Title", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtTitle.Focus();
+                }
+            }
+            else if (isDigits(txtEdition.Text) == true && int.Parse(txtEdition.Text) < 1 || isDigits(txtPrice.Text) == true && int.Parse(txtPrice.Text) < 1)
+            {
+                if (isDigits(txtEdition.Text) == true && int.Parse(txtEdition.Text) < 1)
+                {
+                    MessageBox.Show("Th edition can't be less than 1!", "Invalid Editon", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtEdition.Clear();
+                    txtEdition.Focus();
+                }
+                if (isDigits(txtPrice.Text) == true && int.Parse(txtPrice.Text) < 1)
+                {
+                    MessageBox.Show("The price can't be less than R1 !", "Invalid Price", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtPrice.Clear();
+                    txtPrice.Focus();
+                }
+            }
+            else
+            {
+                try
                 {
                     conn = new SqlConnection(constr);
                     conn.Open();
@@ -131,24 +160,19 @@ namespace CMPG223_Project
                     comm.ExecuteNonQuery();
                     conn.Close();
 
-                    MessageBox.Show("Book Details Updated", "Change Details");
-                    DisplayAll("Select * From Books");
-
-                    txtISBN.Clear();
-                    txtTitle.Clear();
-                    txtEdition.Clear();
-                    txtPrice.Clear();
+                    progressBar1.Visible = true;
+                    this.timer1.Start();
                 }
-            }
-            catch (SqlException error)
-            {
-                MessageBox.Show(error.Message);
+                catch (SqlException error)
+                {
+                    MessageBox.Show("Please contact page advisor!\n" + error.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            DialogResult update = MessageBox.Show("Are you sure you want to update this Book's Details?", "Update", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+            DialogResult update = MessageBox.Show("Are you sure you want to update this Book's Details?", "Update", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (update == DialogResult.Yes)
             {
                 // Validates if the user selected a  valid RowIndex
@@ -171,9 +195,30 @@ namespace CMPG223_Project
                 }
                 catch (System.ArgumentOutOfRangeException a)
                 {
-                    MessageBox.Show(a.Message);
+                    MessageBox.Show("Please select content inside the table!\n" + a.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            this.progressBar1.Increment(10);
+
+            if (progressBar1.Value == 100)
+            {
+                this.timer1.Stop();
+                progressBar1.Value = 0;
+                progressBar1.Visible = false;
+                MessageBox.Show("Details updated successfully!", "Update", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                DisplayAll("Select * From Books");
+                txtISBN.Clear();
+                txtTitle.Clear();
+                txtEdition.Clear();
+                txtPrice.Clear();
+                txtISBN.Focus();
+               
+            }
+
         }
     }
 }

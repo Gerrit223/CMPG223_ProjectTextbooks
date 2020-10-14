@@ -42,7 +42,7 @@ namespace CMPG223_Project
             }
                 catch (SqlException error)
             {
-                MessageBox.Show(error.Message);
+                MessageBox.Show("Please contact page advisor!\n" + error.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -65,13 +65,13 @@ namespace CMPG223_Project
             }
             catch (SqlException error)
             {
-                MessageBox.Show(error.Message);
+                MessageBox.Show("Please contact page advisor!\n" + error.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
         }
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            DialogResult delete = MessageBox.Show("Are you sure you want to delete this Advert?", "Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+            DialogResult delete = MessageBox.Show("Are you sure you want to delete this Advert?", "Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (delete == DialogResult.Yes)
             {
                 // Validates if the user selected a  valid RowIndex
@@ -84,42 +84,35 @@ namespace CMPG223_Project
                         DeleteEntry("Delete FROM BookAuthors WHERE BookId = '" + bookId + "'");
                         DeleteEntry("Delete FROM BookAdverts WHERE BookId = '" + bookId + "'");
                         DeleteEntry("Delete FROM Books WHERE BookId = '" + bookId + "'");
-                        MessageBox.Show("Advert has been deleted", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        DisplayAll();
+                        progressBar1.Visible = true;
+                        this.timer1.Start();
                     }
                 }
                 catch (System.ArgumentOutOfRangeException a)
                 {
-                    MessageBox.Show(a.Message);
+                    MessageBox.Show("Please select content inside the table!\n" + a.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             } 
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            this.progressBar1.Increment(10);
+
+            if (progressBar1.Value == 100)
+            {
+                this.timer1.Stop();
+                progressBar1.Value = 0;
+                progressBar1.Visible = false;
+                MessageBox.Show("Advert has been deleted", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                DisplayAll();
+            }
         }
 
         private void YourAdvert_Load(object sender, EventArgs e)
         {
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            // Counts the amount of records
-            int count = 0;
-            conn = new SqlConnection(constr);
-            conn.Open();
-            comm = new SqlCommand("SELECT * FROM BookAdverts WHERE ClientId = '" + clientId + "'",conn);
-            datread = comm.ExecuteReader();
-
-            while (datread.Read())
-            {
-                count++;
-            }
-            conn.Close();
-
-            if (count > 0)
-            {
-                MessageBox.Show("LISTINGS AVAILABLE: " + count);
-                DisplayAll();
-            }
-            else
-            {
-                MessageBox.Show("NO LISTINGS MADE");
-            }
+            DisplayAll();
         }
     }
 }
