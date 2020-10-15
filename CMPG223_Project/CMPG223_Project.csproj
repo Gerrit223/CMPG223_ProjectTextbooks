@@ -178,6 +178,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="Register.resx">
       <DependentUpon>Register.cs</DependentUpon>
@@ -217,6 +218,10 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\Background3.jpg" />
+    <None Include="Resources\Background2.png" />
+    <None Include="Resources\Projek background.jpg" />
+    <None Include="Resources\Marketplace.png" />
     <Content Include="TextbookDB.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
