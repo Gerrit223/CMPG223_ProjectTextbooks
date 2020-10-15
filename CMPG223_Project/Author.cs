@@ -133,7 +133,7 @@ namespace CMPG223_Project
             }
             catch (System.ArgumentOutOfRangeException a)
             {
-                MessageBox.Show("Please select content inside the table!\n" + a.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Please select content inside the table!\n\n" + a.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
         }
