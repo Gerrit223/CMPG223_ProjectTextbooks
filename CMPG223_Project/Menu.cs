@@ -78,7 +78,7 @@ namespace CMPG223_Project
 
             if (count > 0)
             {
-                MessageBox.Show("AVAILABLE LISTINGS: " + count, "lISTINGS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("AVAILABLE LISTINGS: " + count, "LISTINGS", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {

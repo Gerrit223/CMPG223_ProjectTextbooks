@@ -147,7 +147,7 @@ namespace CMPG223_Project
                     edition = getStringValue("SELECT Edition from Books WHERE BookId = '" + bookId + "' ");
 
 
-                    listBox1.Items.Add("\t" + title);
+                    listBox1.Items.Add(title);
                     listBox1.Items.Add("");
                     listBox1.Items.Add("Name");
                     listBox1.Items.Add("");

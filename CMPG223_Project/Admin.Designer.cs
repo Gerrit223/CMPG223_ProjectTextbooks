@@ -43,7 +43,7 @@
             // menuStrip1
             // 
             this.menuStrip1.BackColor = System.Drawing.Color.Wheat;
-            this.menuStrip1.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.menuStrip1.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.requestReportToolStripMenuItem,
             this.updateDatabaseToolStripMenuItem,
@@ -51,7 +51,7 @@
             this.logoutToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(800, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(800, 31);
             this.menuStrip1.Stretch = false;
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
@@ -62,17 +62,17 @@
             this.requestReportToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.viewAllDataToolStripMenuItem,
             this.topUsersToolStripMenuItem});
-            this.requestReportToolStripMenuItem.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.requestReportToolStripMenuItem.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.requestReportToolStripMenuItem.ForeColor = System.Drawing.Color.Black;
             this.requestReportToolStripMenuItem.Name = "requestReportToolStripMenuItem";
-            this.requestReportToolStripMenuItem.Size = new System.Drawing.Size(68, 24);
+            this.requestReportToolStripMenuItem.Size = new System.Drawing.Size(92, 27);
             this.requestReportToolStripMenuItem.Text = "Reports";
             // 
             // viewAllDataToolStripMenuItem
             // 
             this.viewAllDataToolStripMenuItem.BackColor = System.Drawing.Color.Wheat;
             this.viewAllDataToolStripMenuItem.Name = "viewAllDataToolStripMenuItem";
-            this.viewAllDataToolStripMenuItem.Size = new System.Drawing.Size(169, 24);
+            this.viewAllDataToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
             this.viewAllDataToolStripMenuItem.Text = "Monthly listings";
             this.viewAllDataToolStripMenuItem.Click += new System.EventHandler(this.viewAllDataToolStripMenuItem_Click);
             // 
@@ -80,7 +80,7 @@
             // 
             this.topUsersToolStripMenuItem.BackColor = System.Drawing.Color.Wheat;
             this.topUsersToolStripMenuItem.Name = "topUsersToolStripMenuItem";
-            this.topUsersToolStripMenuItem.Size = new System.Drawing.Size(169, 24);
+            this.topUsersToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
             this.topUsersToolStripMenuItem.Text = "Top Users";
             this.topUsersToolStripMenuItem.Click += new System.EventHandler(this.topUsersToolStripMenuItem_Click);
             // 
@@ -89,9 +89,9 @@
             this.updateDatabaseToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.booksToolStripMenuItem1,
             this.authorToolStripMenuItem});
-            this.updateDatabaseToolStripMenuItem.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.updateDatabaseToolStripMenuItem.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.updateDatabaseToolStripMenuItem.Name = "updateDatabaseToolStripMenuItem";
-            this.updateDatabaseToolStripMenuItem.Size = new System.Drawing.Size(64, 24);
+            this.updateDatabaseToolStripMenuItem.Size = new System.Drawing.Size(86, 27);
             this.updateDatabaseToolStripMenuItem.Text = "Update";
             // 
             // booksToolStripMenuItem1
@@ -112,17 +112,17 @@
             // 
             // deleteToolStripMenuItem
             // 
-            this.deleteToolStripMenuItem.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.deleteToolStripMenuItem.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(60, 24);
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(79, 27);
             this.deleteToolStripMenuItem.Text = "Delete";
             this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
             // 
             // logoutToolStripMenuItem
             // 
-            this.logoutToolStripMenuItem.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.logoutToolStripMenuItem.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
-            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(62, 24);
+            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(84, 27);
             this.logoutToolStripMenuItem.Text = "Logout";
             this.logoutToolStripMenuItem.Click += new System.EventHandler(this.logoutToolStripMenuItem_Click);
             // 

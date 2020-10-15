@@ -91,6 +91,13 @@ namespace CMPG223_Project
             }
         }
 
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Login l1 = new Login();
+            l1.ShowDialog();
+            this.Close();
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
             string name, surname, cellnr, password;
