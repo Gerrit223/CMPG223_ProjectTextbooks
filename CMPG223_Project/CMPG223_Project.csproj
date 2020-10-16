@@ -222,12 +222,14 @@
     <None Include="Resources\Background2.png" />
     <None Include="Resources\Projek background.jpg" />
     <None Include="Resources\Marketplace.png" />
-    <Content Include="TextbookDB.mdf">
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Textbooks.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="TextbookDB_log.ldf">
+    <Content Include="Textbooks_log.ldf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <DependentUpon>TextbookDB.mdf</DependentUpon>
+      <DependentUpon>Textbooks.mdf</DependentUpon>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

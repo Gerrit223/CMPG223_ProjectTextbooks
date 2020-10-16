@@ -45,6 +45,7 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.SuspendLayout();
             // 
             // label1
@@ -88,6 +89,7 @@
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(150, 26);
             this.txtPassword.TabIndex = 4;
+            this.toolTip1.SetToolTip(this.txtPassword, "choose a strong password");
             // 
             // txtConfirm
             // 
@@ -108,6 +110,7 @@
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(150, 26);
             this.txtEmail.TabIndex = 2;
+            this.toolTip1.SetToolTip(this.txtEmail, "ex. test@gmail.com");
             // 
             // button1
             // 
@@ -136,6 +139,7 @@
             this.txtCellphone.Name = "txtCellphone";
             this.txtCellphone.Size = new System.Drawing.Size(150, 26);
             this.txtCellphone.TabIndex = 3;
+            this.toolTip1.SetToolTip(this.txtCellphone, "must be 10 digits");
             // 
             // progressBar1
             // 
@@ -230,6 +234,12 @@
             this.label11.Text = "Surname:";
             this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
+            // toolTip1
+            // 
+            this.toolTip1.AutoPopDelay = 5000;
+            this.toolTip1.InitialDelay = 100;
+            this.toolTip1.ReshowDelay = 50;
+            // 
             // Register
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -278,5 +288,6 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

@@ -118,6 +118,8 @@ namespace CMPG223_Project
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             // Validates if the user selected a  valid RowIndex
+            txtFirst.Enabled = true;
+            txtLast.Enabled = true;
             try
             {
                 if (dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
@@ -149,6 +151,8 @@ namespace CMPG223_Project
                 progressBar1.Visible = false;
                 MessageBox.Show("Author details updated!", "Update", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 DisplayAll("Select * From Author");
+                txtFirst.Enabled = false;
+                txtLast.Enabled = false;
                 txtFirst.Clear();
                 txtLast.Clear();
                 txtFirst.Focus();

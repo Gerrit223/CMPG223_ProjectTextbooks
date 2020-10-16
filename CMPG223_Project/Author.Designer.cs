@@ -42,6 +42,7 @@
             this.btnUpdate = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -108,12 +109,14 @@
             this.dataGridView1.ShowRowErrors = false;
             this.dataGridView1.Size = new System.Drawing.Size(800, 240);
             this.dataGridView1.TabIndex = 3;
+            this.toolTip1.SetToolTip(this.dataGridView1, "Select a record");
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
             // txtFirst
             // 
             this.txtFirst.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtFirst.BackColor = System.Drawing.SystemColors.Info;
+            this.txtFirst.Enabled = false;
             this.txtFirst.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtFirst.Location = new System.Drawing.Point(300, 300);
             this.txtFirst.Name = "txtFirst";
@@ -124,6 +127,7 @@
             // 
             this.txtLast.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtLast.BackColor = System.Drawing.SystemColors.Info;
+            this.txtLast.Enabled = false;
             this.txtLast.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtLast.Location = new System.Drawing.Point(300, 370);
             this.txtLast.Name = "txtLast";
@@ -222,5 +226,6 @@
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.ProgressBar progressBar1;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

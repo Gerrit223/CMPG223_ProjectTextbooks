@@ -172,6 +172,10 @@ namespace CMPG223_Project
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            txtEdition.Enabled = true;
+            txtISBN.Enabled = true;
+            txtPrice.Enabled = true;
+            txtTitle.Enabled = true;
             DialogResult update = MessageBox.Show("Are you sure you want to update this Book's Details?", "Update", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (update == DialogResult.Yes)
             {
@@ -211,6 +215,10 @@ namespace CMPG223_Project
                 progressBar1.Visible = false;
                 MessageBox.Show("Details updated successfully!", "Update", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 DisplayAll("Select * From Books");
+                txtEdition.Enabled = false;
+                txtISBN.Enabled = false;
+                txtPrice.Enabled = false;
+                txtTitle.Enabled = false;
                 txtISBN.Clear();
                 txtTitle.Clear();
                 txtEdition.Clear();

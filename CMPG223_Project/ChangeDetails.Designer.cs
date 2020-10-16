@@ -41,6 +41,7 @@
             this.lblName = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.SuspendLayout();
             // 
             // label2
@@ -64,6 +65,7 @@
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(150, 26);
             this.txtEmail.TabIndex = 0;
+            this.toolTip1.SetToolTip(this.txtEmail, "ex.  test@gmail.com");
             // 
             // txtCell
             // 
@@ -74,6 +76,7 @@
             this.txtCell.Name = "txtCell";
             this.txtCell.Size = new System.Drawing.Size(150, 26);
             this.txtCell.TabIndex = 1;
+            this.toolTip1.SetToolTip(this.txtCell, "must be 10 digits");
             // 
             // btnChange
             // 
@@ -148,6 +151,7 @@
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(150, 26);
             this.txtPassword.TabIndex = 2;
+            this.toolTip1.SetToolTip(this.txtPassword, "choose a strong password");
             // 
             // lblName
             // 
@@ -217,5 +221,6 @@
         private System.Windows.Forms.Label lblName;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.ProgressBar progressBar1;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

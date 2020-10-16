@@ -46,6 +46,7 @@
             this.btnUpdate = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -109,12 +110,14 @@
             this.dataGridView1.ShowRowErrors = false;
             this.dataGridView1.Size = new System.Drawing.Size(800, 240);
             this.dataGridView1.TabIndex = 5;
+            this.toolTip1.SetToolTip(this.dataGridView1, "Select a record");
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
             // txtISBN
             // 
             this.txtISBN.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtISBN.BackColor = System.Drawing.SystemColors.Info;
+            this.txtISBN.Enabled = false;
             this.txtISBN.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtISBN.Location = new System.Drawing.Point(300, 300);
             this.txtISBN.Name = "txtISBN";
@@ -125,6 +128,7 @@
             // 
             this.txtPrice.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtPrice.BackColor = System.Drawing.SystemColors.Info;
+            this.txtPrice.Enabled = false;
             this.txtPrice.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPrice.Location = new System.Drawing.Point(300, 510);
             this.txtPrice.Name = "txtPrice";
@@ -135,6 +139,7 @@
             // 
             this.txtEdition.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtEdition.BackColor = System.Drawing.SystemColors.Info;
+            this.txtEdition.Enabled = false;
             this.txtEdition.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEdition.Location = new System.Drawing.Point(300, 440);
             this.txtEdition.Name = "txtEdition";
@@ -145,6 +150,7 @@
             // 
             this.txtTitle.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtTitle.BackColor = System.Drawing.SystemColors.Info;
+            this.txtTitle.Enabled = false;
             this.txtTitle.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTitle.Location = new System.Drawing.Point(300, 370);
             this.txtTitle.Name = "txtTitle";
@@ -277,5 +283,6 @@
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.ProgressBar progressBar1;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

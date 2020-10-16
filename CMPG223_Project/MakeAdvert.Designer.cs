@@ -44,6 +44,7 @@
             this.txtAuthorSurname = new System.Windows.Forms.TextBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.SuspendLayout();
             // 
             // label1
@@ -113,6 +114,7 @@
             this.txtEdition.Name = "txtEdition";
             this.txtEdition.Size = new System.Drawing.Size(150, 26);
             this.txtEdition.TabIndex = 1;
+            this.toolTip1.SetToolTip(this.txtEdition, "ex. 7");
             // 
             // txtISBN
             // 
@@ -123,6 +125,7 @@
             this.txtISBN.Name = "txtISBN";
             this.txtISBN.Size = new System.Drawing.Size(150, 26);
             this.txtISBN.TabIndex = 3;
+            this.toolTip1.SetToolTip(this.txtISBN, "ex. 978-3-16-148410-5");
             // 
             // txtPrice
             // 
@@ -133,6 +136,7 @@
             this.txtPrice.Name = "txtPrice";
             this.txtPrice.Size = new System.Drawing.Size(150, 26);
             this.txtPrice.TabIndex = 2;
+            this.toolTip1.SetToolTip(this.txtPrice, "ex. 500");
             // 
             // button1
             // 
@@ -212,6 +216,12 @@
             this.progressBar1.TabIndex = 15;
             this.progressBar1.Visible = false;
             // 
+            // toolTip1
+            // 
+            this.toolTip1.AutoPopDelay = 5000;
+            this.toolTip1.InitialDelay = 100;
+            this.toolTip1.ReshowDelay = 50;
+            // 
             // MakeAdvert
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -258,5 +268,6 @@
         private System.Windows.Forms.TextBox txtAuthorSurname;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.ProgressBar progressBar1;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }
