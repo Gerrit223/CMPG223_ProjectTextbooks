@@ -115,7 +115,7 @@ namespace CMPG223_Project
             emailAvailable = isemailAvailable(email);
             cellValid = isCellValid(cellnr);
 
-            if (name == "" || surname == "" || email == ""|| password != confirmPassword || cellnr.Length != 10 || digits == false || emailAvailable == false || cellValid == false)
+            if (name == "" || surname == "" || email == ""|| password != confirmPassword || cellnr.Length != 10 || digits == false || emailAvailable == false || cellValid == false|| password.Length > 10)
             {
                 if (emailAvailable == false)
                 {
@@ -135,9 +135,16 @@ namespace CMPG223_Project
                     txtCellphone.Clear();
                     txtCellphone.Focus();
                 }
-                if (password != confirmPassword)
+                if (password != confirmPassword || password.Length >= 10)
                 {
-                    MessageBox.Show("Passwords DO NOT match!", "Password", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    if (password.Length > 10)
+                    {
+                        MessageBox.Show("Passwords are to long!", "Password", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Passwords DO NOT match!", "Password", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                     txtConfirm.Clear();
                     txtPassword.Clear();
                     txtPassword.Focus();

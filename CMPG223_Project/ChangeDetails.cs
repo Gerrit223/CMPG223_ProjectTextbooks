@@ -131,15 +131,22 @@ namespace CMPG223_Project
             }
 
 
-            if (txtEmail.Text == "" || txtCell.Text.Length != 10 || txtPassword.Text == "" || txtPassword.Text != txtConfirm.Text || digits == false || emailAvailable == false || cellValid == false)
+            if (txtEmail.Text == "" || txtCell.Text.Length != 10 || txtPassword.Text == "" || txtPassword.Text != txtConfirm.Text || digits == false || emailAvailable == false || cellValid == false|| txtPassword.Text.Length > 10)
             {
                 if (txtEmail.Text == "" || txtCell.Text.Length != 10 || txtPassword.Text == "")
                 {
                     MessageBox.Show("Some fields are missing!", "Invalid fields", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-                if (txtPassword.Text != txtConfirm.Text)
+                if (txtPassword.Text != txtConfirm.Text || txtPassword.Text.Length > 10)
                 {
-                    MessageBox.Show("Password doesn't match!", "Password", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    if (txtPassword.Text.Length > 10)
+                    {
+                        MessageBox.Show("The password is to long", "Password", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                       MessageBox.Show("Password doesn't match!", "Password", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                     txtConfirm.Clear();
                     txtPassword.Clear();
                     txtPassword.Focus();

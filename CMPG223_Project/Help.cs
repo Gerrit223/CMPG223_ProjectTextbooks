@@ -20,7 +20,7 @@ namespace CMPG223_Project
         private void Help_Load(object sender, EventArgs e)
         {
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            axAcroPDF1.src = @"E:\CMPG 223 NEWCLONE\CMPG223_Project\USERMANUAL.pdf";
+            axAcroPDF1.src = @"D:\Documents\IT2020\CMPG223\New\CMPG223_Project\USERMANUAL.pdf";
         }
     }
 }
