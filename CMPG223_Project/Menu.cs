@@ -21,6 +21,7 @@ namespace CMPG223_Project
         public DataTable dt;
         public string constr;
         public int Client;
+
         public Menu(int ClientIdValue, string myString)
         {
             InitializeComponent();
@@ -93,6 +94,13 @@ namespace CMPG223_Project
             ChangeDetails dt = new ChangeDetails(Client,constr);
             dt.MdiParent = this;
             dt.Show();
+        }
+
+        private void helpToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Help h1 = new Help();
+            h1.MdiParent = this;
+            h1.Show();
         }
     }
 }
