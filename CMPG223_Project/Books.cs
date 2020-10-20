@@ -34,7 +34,8 @@ namespace CMPG223_Project
             InitializeComponent();
         }
 
-        public bool isDigits(string number) //Method om te kyk of cell nr. uit digits bestaan
+        //Method to see if the price & Edition is valid
+        public bool isDigits(string number)
         {
             foreach (char c in number)
             {
@@ -44,6 +45,7 @@ namespace CMPG223_Project
             return true;
         }
 
+        // Obtains the ISBN,Title,Price & Edition
         public string getStringValue(string sql)
         {
             string sqlStatement = sql;
@@ -70,6 +72,7 @@ namespace CMPG223_Project
             }
         }
 
+        // Method to display the data
         private void DisplayAll(string sql)
         {
             // Populates the datagrid
@@ -103,6 +106,7 @@ namespace CMPG223_Project
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
+            // Controls if the data is valid
             if (txtEdition.Text == "" || txtISBN.Text.Length != 17 || txtPrice.Text == "" || txtTitle.Text == "" || isDigits(txtEdition.Text) == false || isDigits(txtPrice.Text) == false)
             {
                 if (txtEdition.Text == "" || isDigits(txtEdition.Text) == false)
@@ -129,6 +133,7 @@ namespace CMPG223_Project
                     txtTitle.Focus();
                 }
             }
+            // Validates if the edition and price is greater than 1
             else if (isDigits(txtEdition.Text) == true && int.Parse(txtEdition.Text) < 1 || isDigits(txtPrice.Text) == true && int.Parse(txtPrice.Text) < 1)
             {
                 if (isDigits(txtEdition.Text) == true && int.Parse(txtEdition.Text) < 1)
@@ -146,6 +151,7 @@ namespace CMPG223_Project
             }
             else
             {
+                // Updates the Record
                 try
                 {
                     conn = new SqlConnection(constr);
@@ -206,6 +212,7 @@ namespace CMPG223_Project
 
         private void timer1_Tick(object sender, EventArgs e)
         {
+            //Activates the progress bar if all the data is correct;
             this.progressBar1.Increment(10);
 
             if (progressBar1.Value == 100)

@@ -19,7 +19,9 @@ namespace CMPG223_Project
 
         private void Help_Load(object sender, EventArgs e)
         {
+            // Opens the user manual pdf file
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            // Location of the user manual that can be changed upon installation
             axAcroPDF1.src = @"D:\Documents\IT2020\CMPG223\New\CMPG223_Project\USERMANUAL.pdf";
         }
     }

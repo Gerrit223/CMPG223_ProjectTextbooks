@@ -26,7 +26,8 @@ namespace CMPG223_Project
             InitializeComponent();
         }
 
-        public bool isDigits(string cellnr) //Method om te kyk of cell nr. uit digits bestaan
+        //Method om te kyk of cell nr. uit digits bestaan
+        public bool isDigits(string cellnr)
         {
             foreach(char c in cellnr)
             {
@@ -36,6 +37,7 @@ namespace CMPG223_Project
             return true;
         }
 
+        //Validates the availability of the email
         public bool isemailAvailable(string email)
         {
                 string sql = "SELECT * FROM Clients";
@@ -56,6 +58,7 @@ namespace CMPG223_Project
                 return true;         
         }
 
+        //Validates the availability of the cellphone number
         public bool isCellValid(string cell)
         {
             string sql = "SELECT * FROM Clients";
@@ -114,7 +117,7 @@ namespace CMPG223_Project
             digits = isDigits(cellnr);
             emailAvailable = isemailAvailable(email);
             cellValid = isCellValid(cellnr);
-
+            // Tests if all the data entered is correct
             if (name == "" || surname == "" || email == ""|| password != confirmPassword || cellnr.Length != 10 || digits == false || emailAvailable == false || cellValid == false|| password.Length > 10)
             {
                 if (emailAvailable == false)
@@ -139,7 +142,7 @@ namespace CMPG223_Project
                 {
                     if (password.Length > 10)
                     {
-                        MessageBox.Show("Passwords are to long!", "Password", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Passwords are too long!", "Password", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     else
                     {
@@ -158,6 +161,7 @@ namespace CMPG223_Project
             {
                 try
                 {
+                    // Creates the new user
                     string insert = "INSERT INTO Clients VALUES(@Name,@Surname,@email,@cellnr,@password)";
                     conn.Open();
                     this.timer1.Start();
@@ -179,6 +183,7 @@ namespace CMPG223_Project
 
         private void timer1_Tick(object sender, EventArgs e)
         {
+            //Activates the progress bar
             this.progressBar1.Increment(10);
 
             if(progressBar1.Value == 100)

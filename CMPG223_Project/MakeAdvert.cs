@@ -29,7 +29,9 @@ namespace CMPG223_Project
             InitializeComponent();
 
         }
-        public bool isDigits(string number) //Method om te kyk of cell nr. uit digits bestaan
+
+        //Method to test if the price and edition is integer values
+        public bool isDigits(string number) 
         {
             foreach (char c in number)
             {
@@ -41,6 +43,7 @@ namespace CMPG223_Project
 
         private void timer1_Tick(object sender, EventArgs e)
         {
+            // Activates the progress bar
             this.progressBar1.Increment(10);
 
             if (progressBar1.Value == 100)
@@ -59,6 +62,7 @@ namespace CMPG223_Project
             }
         }
 
+        //Obtains the bookID or Author ID
         public int getPrimaryKeyValue(string sql)
         {
             string sqlStatement = sql;
@@ -88,6 +92,7 @@ namespace CMPG223_Project
         {
             string isbn, title, edition, authorname, authorsurname;
             int price;
+            // Validates all the data that is entered
             if (txtAuthorName.Text == "" || txtAuthorSurname.Text == "" || txtEdition.Text == "" || txtISBN.Text.Length != 17 || txtPrice.Text == "" || txtTitle.Text == "" || isDigits(txtEdition.Text) == false || isDigits(txtPrice.Text) == false)
             {
                 if (txtEdition.Text == "" || isDigits(txtEdition.Text) == false)
@@ -124,6 +129,7 @@ namespace CMPG223_Project
                     txtAuthorSurname.Focus();
                 }
             }
+            // Tests if the price is more than 1 or if the edition is more than 1
             else if (isDigits(txtEdition.Text) == true && int.Parse(txtEdition.Text) < 1 || isDigits(txtPrice.Text) == true && int.Parse(txtPrice.Text) < 1)
             {
                 if (isDigits(txtEdition.Text) == true && int.Parse(txtEdition.Text) < 1)

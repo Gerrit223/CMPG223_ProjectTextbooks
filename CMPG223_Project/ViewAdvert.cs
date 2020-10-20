@@ -29,6 +29,7 @@ namespace CMPG223_Project
             clientId = id;
         }
 
+        // Obtains the clientID
         public int getPrimaryKeyValue(string sql)
         {
             string sqlStatement = sql;
@@ -55,6 +56,7 @@ namespace CMPG223_Project
             }
         }
 
+        //Obtains the Name,Surname, title price & edition
         public string getStringValue(string sql)
         {
             string sqlStatement = sql;
@@ -81,6 +83,7 @@ namespace CMPG223_Project
         private void ViewAdvert_Load(object sender, EventArgs e)
         {
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            // Displays all the data in the datagridview
             try
             {
                 conn = new SqlConnection(constr);
@@ -103,6 +106,7 @@ namespace CMPG223_Project
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
+            // "Live search" while the user types the data gets searched for
             if(textBox1.Text == "")
             {
                 listBox1.Items.Clear();
@@ -132,6 +136,7 @@ namespace CMPG223_Project
 
             listBox1.Items.Clear();
             string name, surname, cell, title, price, edition;
+            // Displays the sellers details in a listbox when the user selects a record
             try
             {
                 if (dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)

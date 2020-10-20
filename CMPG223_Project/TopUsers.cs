@@ -41,6 +41,7 @@ namespace CMPG223_Project
             }
             else
             {
+                // Obtains the selected month
                 switch (choice)
                 {
                     case 0:
@@ -96,6 +97,7 @@ namespace CMPG223_Project
                 }
                 try
                 {
+                    // Displays the report
                     conn = new SqlConnection(constr);
                     conn.Open();
                     comm = new SqlCommand("SELECT Clients.Name, Clients.Surname, COUNT(BookAdverts.BookAdvertId) AS TotalAdverts FROM BookAdverts LEFT JOIN Clients ON BookAdverts.ClientId=Clients.ClientId WHERE MONTH(BookAdverts.DateAdded) = '" + date + "' GROUP BY Name,Surname ORDER BY TotalAdverts DESC", conn);

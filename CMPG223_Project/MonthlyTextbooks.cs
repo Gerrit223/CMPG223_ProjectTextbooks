@@ -45,6 +45,7 @@ namespace CMPG223_Project
             }
             else
             {
+                // Obtains the correct month
                 switch (choice)
                 {
                     case 0:
@@ -101,6 +102,7 @@ namespace CMPG223_Project
 
                 try
                 {
+                    // Displaying the report data
                     conn = new SqlConnection(constr);
                     conn.Open();
                     comm = new SqlCommand("SELECT c.Name, c.Surname, b.Title, ba.DateAdded From Books as b, BookAdverts as ba, Clients as c Where c.ClientId = ba.ClientId AND b.BookId = ba.BookId AND MONTH(ba.DateAdded) = '" + date + "' ", conn);

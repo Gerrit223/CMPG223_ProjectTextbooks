@@ -27,6 +27,7 @@ namespace CMPG223_Project
         public SqlDataReader datread;
         public DataTable dt;
         public int ClientIdValue;
+        // Connection string for the database that can be changed upon installation
         public string constr = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\Documents\IT2020\CMPG223\New\CMPG223_Project\TextbookDB.mdf;Integrated Security=True";
         public Login()
         {
@@ -36,6 +37,7 @@ namespace CMPG223_Project
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
+            // Opens the register form
             Register register = new Register(constr);
             register.ShowDialog();
             this.WindowState = System.Windows.Forms.FormWindowState.Minimized;
@@ -51,14 +53,17 @@ namespace CMPG223_Project
         {
           string password = txtPassowrd.Text;
           string  username = txtEmail.Text;
+            //Opens the admin form if the data is correct
             if (username == "admin" && password == "admin")
             {
                 Admin a = new Admin(constr);
                 a.ShowDialog();
                 this.Close();
             }
+            // Opens the Menu form if the user entered the correct data
             else
             {
+                // Validates the username & password
                 try
                 {
                     conn = new SqlConnection(constr);
@@ -92,6 +97,7 @@ namespace CMPG223_Project
                     }
                     else
                     {
+                        // Show this message if the username and password is wrong
                         MessageBox.Show("Username/Password incorrect","Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
                         txtEmail.Clear();
                         txtPassowrd.Clear();

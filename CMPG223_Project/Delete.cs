@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.ComponentModel.Design.Serialization;
-// Nuwe Weergame
 namespace CMPG223_Project
 {
     public partial class Delete : Form
@@ -28,6 +27,7 @@ namespace CMPG223_Project
             InitializeComponent();
         }
 
+        // Gets the amount of books for each user
         public int getAmount(string sql)
         {
             int count = 0;
@@ -43,6 +43,8 @@ namespace CMPG223_Project
             conn.Close();
             return count;
         }
+        
+        //Obtains the ClientID or BookID
         public int getPrimaryKeyValue(string sql)
         {
             int primarykey;
@@ -77,7 +79,7 @@ namespace CMPG223_Project
 
         private void DeleteEntry(String sqlDelete)
         {
-            // Delete the entery that the user selected
+            // Delete s the entery on the selection of the gridview
             try
             {
                 conn = new SqlConnection(constr);
@@ -202,6 +204,7 @@ namespace CMPG223_Project
 
         private void timer1_Tick(object sender, EventArgs e)
         {
+            // Activates the progress bar
             this.progressBar1.Increment(10);
 
             if (progressBar1.Value == 100)

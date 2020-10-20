@@ -64,7 +64,7 @@ namespace CMPG223_Project
             YourAdvert ya = new YourAdvert(Client,constr);
             ya.MdiParent = this;
 
-            // Counts the amount of records
+            // Counts the amount of records for the specific user
             int count = 0;
             conn = new SqlConnection(constr);
             conn.Open();

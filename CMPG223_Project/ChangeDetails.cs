@@ -28,8 +28,9 @@ namespace CMPG223_Project
             constr = myConstr;
             InitializeComponent();
         }
-
-        public bool isDigits(string cellnr) //Method om te kyk of cell nr. uit digits bestaan
+        
+        //Method om te kyk of cell nr. uit digits bestaan
+        public bool isDigits(string cellnr) 
         {
             foreach (char c in cellnr)
             {
@@ -38,7 +39,8 @@ namespace CMPG223_Project
             }
             return true;
         }
-
+        
+        //Method to see if emai doesn't exist
         public bool isemailAvailable(string gEmail)
         {
             conn = new SqlConnection(constr);
@@ -58,7 +60,7 @@ namespace CMPG223_Project
             conn.Close();
             return true;
         }
-
+        //Method to see if cell number doesn't exist
         public bool isCellValid(string gCell)
         {
             conn = new SqlConnection(constr);
@@ -80,6 +82,7 @@ namespace CMPG223_Project
             return true;
         }
 
+        // Method to obtain the email and cell number
         public string getStringValue(string sql)
         {
             conn = new SqlConnection(constr);
@@ -112,7 +115,7 @@ namespace CMPG223_Project
             bool digits, emailAvailable, cellValid;
 
             digits = isDigits(txtCell.Text);
-
+            // Tests to see if email and cellphone number is valid
             if (email == txtEmail.Text)
             {
                 emailAvailable = true;    
@@ -130,7 +133,7 @@ namespace CMPG223_Project
                 cellValid = isCellValid(txtCell.Text);
             }
 
-
+            //Tests all the data that is entered
             if (txtEmail.Text == "" || txtCell.Text.Length != 10 || txtPassword.Text == "" || txtPassword.Text != txtConfirm.Text || digits == false || emailAvailable == false || cellValid == false|| txtPassword.Text.Length > 10)
             {
                 if (txtEmail.Text == "" || txtCell.Text.Length != 10 || txtPassword.Text == "")
@@ -141,7 +144,7 @@ namespace CMPG223_Project
                 {
                     if (txtPassword.Text.Length > 10)
                     {
-                        MessageBox.Show("The password is to long", "Password", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("The password is too long", "Password", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     else
                     {
@@ -177,6 +180,7 @@ namespace CMPG223_Project
                 {
                     try
                     {
+                        // Updates the client details
                         conn = new SqlConnection(constr);
                         conn.Open();
                         string sql = "UPDATE Clients SET email = @email, cellnr = @cell, password = @password WHERE ClientId = '" + clientID + "'";
@@ -206,6 +210,7 @@ namespace CMPG223_Project
 
         private void timer1_Tick(object sender, EventArgs e)
         {
+            // activates the loading bar
             this.progressBar1.Increment(10);
 
             if (progressBar1.Value == 100)
@@ -226,6 +231,7 @@ namespace CMPG223_Project
         private void ChangeDetails_Load(object sender, EventArgs e)
         {
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            // obtains the client email and cellphone number
             email = getStringValue("SELECT email from Clients WHERE ClientId = '" + clientID + "'");
             cell = getStringValue("SELECT cellnr from Clients WHERE ClientId = '" + clientID + "'");
             lblName.Text = "Changing details for: " + getStringValue("SELECT Name from Clients WHERE ClientId = '" + clientID + "'") + " " + getStringValue("SELECT Surname from Clients WHERE ClientId = '" + clientID + "'");

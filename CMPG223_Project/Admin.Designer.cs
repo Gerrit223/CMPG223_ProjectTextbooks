@@ -72,7 +72,7 @@
             // 
             this.viewAllDataToolStripMenuItem.BackColor = System.Drawing.Color.Wheat;
             this.viewAllDataToolStripMenuItem.Name = "viewAllDataToolStripMenuItem";
-            this.viewAllDataToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.viewAllDataToolStripMenuItem.Size = new System.Drawing.Size(219, 28);
             this.viewAllDataToolStripMenuItem.Text = "Monthly listings";
             this.viewAllDataToolStripMenuItem.Click += new System.EventHandler(this.viewAllDataToolStripMenuItem_Click);
             // 
@@ -80,7 +80,7 @@
             // 
             this.topUsersToolStripMenuItem.BackColor = System.Drawing.Color.Wheat;
             this.topUsersToolStripMenuItem.Name = "topUsersToolStripMenuItem";
-            this.topUsersToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.topUsersToolStripMenuItem.Size = new System.Drawing.Size(219, 28);
             this.topUsersToolStripMenuItem.Text = "Top Users";
             this.topUsersToolStripMenuItem.Click += new System.EventHandler(this.topUsersToolStripMenuItem_Click);
             // 
@@ -98,7 +98,7 @@
             // 
             this.booksToolStripMenuItem1.BackColor = System.Drawing.Color.Wheat;
             this.booksToolStripMenuItem1.Name = "booksToolStripMenuItem1";
-            this.booksToolStripMenuItem1.Size = new System.Drawing.Size(117, 24);
+            this.booksToolStripMenuItem1.Size = new System.Drawing.Size(139, 28);
             this.booksToolStripMenuItem1.Text = "Books";
             this.booksToolStripMenuItem1.Click += new System.EventHandler(this.booksToolStripMenuItem1_Click);
             // 
@@ -106,7 +106,7 @@
             // 
             this.authorToolStripMenuItem.BackColor = System.Drawing.Color.Wheat;
             this.authorToolStripMenuItem.Name = "authorToolStripMenuItem";
-            this.authorToolStripMenuItem.Size = new System.Drawing.Size(117, 24);
+            this.authorToolStripMenuItem.Size = new System.Drawing.Size(139, 28);
             this.authorToolStripMenuItem.Text = "Author";
             this.authorToolStripMenuItem.Click += new System.EventHandler(this.authorToolStripMenuItem_Click);
             // 

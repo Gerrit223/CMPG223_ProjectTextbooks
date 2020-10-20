@@ -29,7 +29,7 @@ namespace CMPG223_Project
             constr = myConstr;
             InitializeComponent();
         }
-
+        // Obtains the Author Name & Surname from the database
         public string getStringValue(string sql)
         {
             string sqlStatement = sql;
@@ -82,6 +82,7 @@ namespace CMPG223_Project
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
+            // Updates the Author Data if the data is right
             try
             {
                 if (txtFirst.Text == "" || txtLast.Text == "")
@@ -142,8 +143,8 @@ namespace CMPG223_Project
 
         private void timer1_Tick(object sender, EventArgs e)
         {
+            // Activates the loading progress bar
             this.progressBar1.Increment(10);
-
             if (progressBar1.Value == 100)
             {
                 this.timer1.Stop();
